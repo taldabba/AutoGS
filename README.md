@@ -6,5 +6,10 @@ Taim Al-Dabbagh: Hardware, Firmware, Front-End Development
 Adam Ikram: Front-End and Back-End Development
 Hamza Kamal: Budgeting and Financial Advisor
 
+
 # Instructions:
-TODO
+
+
+# To Do:
+- make tank
+- design 3d model
