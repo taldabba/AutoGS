@@ -247,9 +247,9 @@ def home():
 		else:
 			myPort.toLcd(lcdText)
 
-		return render_template("taimGUI.html")
+		return render_template("interface.html")
 	else:
-		return render_template("taimGUI.html")
+		return render_template("interface.html")
 
 if __name__ =="__main__":
 	app.run(port=8082,debug = True)
