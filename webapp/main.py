@@ -13,8 +13,6 @@ import sched
 import random
 import collections	
 
-
-
 class buttonToggle:
 	def __init__(ledColour,onMsg,offMsg):
 		ledColour.onMsg = onMsg
@@ -26,18 +24,12 @@ class buttonToggle:
 	def reset(ledColour):
 		ledColour.state = False
 
-
-
-
 class serialPort:
 	def __init__(self,port):
-		
 
-		
 		def initializeSerialFunc(comsTypeQue,tData,hData,smData):
 			def pullSensors():
 				print("bruh")
-
 
 			while True:
 				# ser = serial.Serial('COM3',19200)
@@ -56,7 +48,6 @@ class serialPort:
 					# pullTimer = threading.Timer(0.0,pullSensors)
 					# pullTimer.start()
 					break
-				
 			
 			while True:
 
@@ -69,7 +60,6 @@ class serialPort:
 				# if(ser.in_waiting > 0):
 				# 	line = ser.readline()
 				# 	print(line.decode())
-
 
 				if not comsTypeQue.empty():
 					
@@ -90,8 +80,6 @@ class serialPort:
 									line = ser.readline()
 									print(line.decode())
 								# 	# time.sleep(0.5)	
-
-
 
 						elif toArduino[0] == "%" and toArduino[-1] == "*":		
 							if(ser.in_waiting > 0):
@@ -118,16 +106,6 @@ class serialPort:
 
 						time.sleep(0.15)
 			
-
-
-					
-							
-			
-
-
-
-
-
 		self.port = port
 		self.comsTypeQue = Queue()
 		self.tData=collections.deque(maxlen=1)
@@ -136,7 +114,6 @@ class serialPort:
 		self.thread = threading.Thread(target =initializeSerialFunc,args =(self.comsTypeQue,self.tData,self.hData,self.smData))
 		
 		# self.timerThread = threading.Thread()
-
 
 	def initializeSerial(self):
 		self.thread.start()
@@ -156,7 +133,6 @@ class serialPort:
 	def lcdClear(self):
 		self.toLcd(" ")
 
-
 def getSensor(q):
 	while True:
 		try:
@@ -167,26 +143,14 @@ def getSensor(q):
 		else:			
 			return data
 
-
-
-
-
-
-
-
 app = Flask(__name__)
-
 
 myPort = serialPort('COM3')
 myPort.initializeSerial()
 
-
-
 redButton = buttonToggle("A","a")
 greenButton = buttonToggle("B","b")
 blueButton = buttonToggle("C","c")
-
-
 
 @app.route("/temperature", methods = ["POST","GET"])
 def temperature():
@@ -198,13 +162,11 @@ def humidity():
 	data = getSensor(myPort.hData)
 	return str(data);
 
-
 @app.route("/soilmoisture", methods= ["POST","GET"])
 def soilmoisture():
 	data = getSensor(myPort.smData)
 
 	return str(data);
-
 
 @app.route("/",methods = ["POST","GET"])
 def home():

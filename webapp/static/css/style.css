@@ -1,43 +1,33 @@
-.red-led-button {
+.home {
+	align-content: center;
+	text-align: center;
+}
 
+.buttons {
+	text-align: center;
+	width: 800px;
+	height: 200px;
+	border: 2px solid black;
+}
+
+#red {
 	background-color:#e82020;
-	width:800px;
-	height:200px;
-	border:2px solid black;
 }
-
-.red-led-button:hover {
-	
+#red:hover {
 	background-color:#cf1f1f
-
 }
 
-.blue-led-button {
-	
-	text-align:center;	
+#blue {
 	background-color:#226ff2;
-	width:800px;
-	height:200px;
-		border:2px solid black;
 }
-
-.blue-led-button:hover {
-		
+#blue:hover {
 	background-color:#1f60cf;
 }
 
-.green-led-button {
-	
-	text-align:center;
+#green {	
 	background-color:#41f222;
-	width:800px;
-	height:200px;
-	border:2px solid black;
 }
-
-.green-led-button:hover {
-	
-	align:center;
+#green:hover {
 	background-color:#39d61e;
 }
 
@@ -46,6 +36,3 @@ h2 {
 	padding-bottom:0px;
 }
 
-form {
-
-}

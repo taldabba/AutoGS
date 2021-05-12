@@ -1,77 +1,93 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<title>
-			AutoGS
-		</title>
-		<link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
-		<script>
-			window.onload = function() {
-					readSensor("temperature");
-					readSensor("humidity");
-					readSensor("soilmoisture");
-					setInterval(loadSensors, 2 * 1000);
-			}
-			
-			function loadSensors() {
-				console.log("test");
-				readSensor("temperature");
-				readSensor("humidity");
-				readSensor("soilmoisture");
-
-			}
-			function readSensor(sensor) {
-				
-			  var xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			    	document.getElementById(sensor).innerHTML =  this.responseText;s
-			    }
-			  };
-			  xhttp.open("GET", sensor, true);
-			  xhttp.send();
-			}
-		</script>
-	</head>
+  <head>
+    <title>AutoGS</title>
+    <link
+      rel="stylesheet"
+	  type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    >
 	
-	<body>
-	<center>
-		<form action='#' method= "post">
-			<button class = "red-led-button"name="led-button" type="submit" value="RED_BUTTON"></button>
-			
-			<br>
-			<button class="green-led-button" name="led-button" type="submit" value="GREEN_BUTTON">
-			</button>
+    <script>
+      window.onload = function () {
+        readSensor("temperature");
+        readSensor("humidity");
+        readSensor("soilmoisture");
+        setInterval(loadSensors, 2 * 1000);
+      };
 
+      function loadSensors() {
+        console.log("test");
+        readSensor("temperature");
+        readSensor("humidity");
+        readSensor("soilmoisture");
+      }
+      function readSensor(sensor) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(sensor).innerHTML = this.responseText;
+            s;
+          }
+        };
+        xhttp.open("GET", sensor, true);
+        xhttp.send();
+      }
+    </script>
+  </head>
 
-			<button class="blue-led-button" name="led-button" type="submit" value="BLUE_BUTTON">
-			</button>			
-			<br>
-			
-			<button name="led-button" type="submit" value="RESET">Reset Arduino Connection</button>
-			
-			
-			<br>
-			<button name="led-button" type="submit" value="SENSOR">Get Sensor Data</button>
-			<br>
-			<br>
-			<br>			
+  <body>
+    <div class="home">
+      <div class="buttons">
+        <form action="#" method="post">
+          <button
+            id="red"
+            name="led-button"
+            type="submit"
+            value="RED_BUTTON"
+          ></button>
 
-			<h2>Send to LCD</h2>
-			<form action="#" method="POST">
-				<input name="lcd">
+          <br />
+          <button
+            id="green"
+            name="led-button"
+            type="submit"
+            value="GREEN_BUTTON"
+          ></button>
 
-				<input type="submit">
-			</form>
-		</form>
-		<div><span>Temperature=</span><span id="temperature"></span></div>
-		<div><span>Humidity=</span><span id="humidity"></span></div>
-		<div><span>Soil Moisture=</span><span id="soilmoisture"></span></div>
+		  <br />
+          <button
+            id="blue"
+            name="led-button"
+            type="submit"
+            value="BLUE_BUTTON"
+          ></button>
+          <br />
 
+          <button name="led-button" type="submit" value="RESET">
+            Reset Arduino Connection
+          </button>
 
-	</center>
-	
-	</body>
+          <br />
+          <button name="led-button" type="submit" value="SENSOR">
+            Get Sensor Data
+          </button>
+          <br />
+          <br />
+          <br />
+        </form>
+      </div>
 
+      <h2>Send to LCD</h2>
+      <form action="#" method="POST">
+        <input name="lcd" />
+
+        <input type="submit" />
+      </form>
+      <div><span>Temperature =</span><span id="temperature"></span></div>
+      <div><span>Humidity =</span><span id="humidity"></span></div>
+      <div><span>Soil Moisture =</span><span id="soilmoisture"></span></div>
+    </div>
+  </body>
 </html>
