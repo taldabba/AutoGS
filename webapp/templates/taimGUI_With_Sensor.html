@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<meta charset="utf-8/" />
+		<meta name="viewport" content="width=device-width, inital-scale=1" />
+		<title>
+			AutoGS
+		</title>
+
+		<script type="text/javascript">
+                var intervalID = setInterval(update_values,100);
+                $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+                function update_values() {
+                        $.getJSON($SCRIPT_ROOT + '/_dynamic',
+                            
+                    function(data) {
+                        $('#result').text(data.result);
+                        console.log(data)
+                    });
+                    
+                    };
+
+                    function stopTextColor() {
+                    clearInterval(intervalID);
+                    }
+		</script>
+
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='stylesheets/style.css') }}">
+	</head>
+	
+	<body onload="update_values();">
+	<center>
+		
+		<form action='#' method= "post">
+		<button class="red-led-button" name="subject" type="submit" value="RED_BUTTON">
+		</button>
+		
+		<br>
+		
+		<button class="blue-led-button" name="subject" type="submit" value="bruh_BUTTON">
+		</button>
+		
+		<br>
+		
+		<button class="green-led-button" name="subject" type="submit" value="GREEN_BUTTON">
+		</button>
+
+		<br>
+
+		<button name="led-button" type="submit" value="RESET">Reset Arduino Connection</button>
+		
+		</form>
+
+		<br><br><br><br>
+		
+		<h2>Send to LCD</h2>
+
+		<form action="#" method="POST">
+		<input type="text" id="lcdinput" name="lcd">
+
+		<br><br>
+
+		<input type="submit" value="Submit">
+		</form>
+
+		<p>
+            <span id="result">?</span>
+        </p>
+
+        <script>
+            document.getElementById("result").innerHTML;
+        </script>
+        <button onclick="stopTextColor();">Stop</button>
+
+	</center>
+	
+	</body>
+
+</html>
