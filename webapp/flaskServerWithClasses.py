@@ -26,9 +26,6 @@ class buttonToggle:
 	def reset(ledColour):
 		ledColour.state = False
 
-
-
-
 class serialPort:
 	def __init__(self,port):
 		
@@ -203,7 +200,7 @@ def humidity():
 def soilmoisture():
 	data = getSensor(myPort.smData)
 
-	return str(data);
+	return str(data)
 
 
 @app.route("/",methods = ["POST","GET"])

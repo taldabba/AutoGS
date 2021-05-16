@@ -1,51 +1,20 @@
-.red-led-button {
-
-	background-color:#e82020;
-	width:800px;
-	height:200px;
-	border:2px solid black;
+p {
+	font-family: 'Exo', sans-serif;
 }
 
-.red-led-button:hover {
-	
-	background-color:#cf1f1f
-
+.led {
+	width: 600px;
+	height: 300px;
+	background-color: aquamarine;
+	align-items: center;
+	align-content: center;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.blue-led-button {
-	
-	text-align:center;	
-	background-color:#226ff2;
-	width:800px;
-	height:200px;
-		border:2px solid black;
-}
-
-.blue-led-button:hover {
-		
-	background-color:#1f60cf;
-}
-
-.green-led-button {
-	
-	text-align:center;
-	background-color:#41f222;
-	width:800px;
-	height:200px;
-	border:2px solid black;
-}
-
-.green-led-button:hover {
-	
-	align:center;
-	background-color:#39d61e;
-}
-
-h2 {
-	font-family:Helvetica;
-	padding-bottom:0px;
-}
-
-form {
-
+#led-header {
+	font-size: 64px;
+	margin-left: 10%;
 }
