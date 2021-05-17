@@ -3,6 +3,8 @@ p {
 }
 
 .logo-home {
+	background-color: cadetblue;
+
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -18,11 +20,13 @@ p {
 }
 
 .led {
+	background-color: brown;
+
 	width: 600px;
-	height: 300px;
+	height: 200px;
 	align-items: center;
 	align-content: center;
-	margin-top: auto;
+	margin-top: -1%;
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
@@ -64,11 +68,12 @@ p {
 
 .water {
 	background-color: blueviolet;
+
 	width: 600px;
-	height: 300px;
+	height: 200px;
 	align-items: center;
 	align-content: center;
-	margin-top: auto;
+	margin-top: -2%;
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
@@ -80,6 +85,7 @@ p {
 	color: white;
 	-webkit-text-stroke: 2.5px black;
 	margin-left: 5%;
+	margin-bottom: 3%;
 }
 
 .water-buttons{
@@ -91,7 +97,7 @@ p {
 
 input[type=radio] {
     border: 0px;
-    width: 5%;
+    width: 3%;
     height: 1.5em;
 	margin-top: auto;
 	margin-bottom: auto;

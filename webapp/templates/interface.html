@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>AutoGS</title>
-	<!-- <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"> -->
+	<!-- <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"> --> <!-- for flask server css linking-->
 	<link rel="stylesheet" href="../static/css/style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Exo&display=swap" rel="stylesheet">
@@ -33,10 +33,10 @@
 		<p id="water-text">Watering</p>
 		<form action="">
 			<div class="water-buttons">
-			<input type="radio" id="automatic" value="AUTOMATIC">
+			<input name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
 			<label for="automatic">Automatic</label>
 			<br>
-			<input type="radio" id="manual" value="MANUAL">
+			<input name="wateroption" type="radio" id="manual" value="MANUAL">
 			<label for="manual">Manual</label>
 		</div>
 		</form>
