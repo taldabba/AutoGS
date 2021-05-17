@@ -14,6 +14,7 @@ String sensorStringLn1;
 String sensorStringLn2;
 
 int pumpPin  = 12;
+int ledPin = 11;
 String fromSerial;
 
 const int wet = 480;
@@ -43,6 +44,8 @@ char checkSerial()
 void setup() {
   // put your setup code here, to run once
   pinMode(pumpPin, OUTPUT);
+  pinMode(ledPin,OUTPUT);
+  
   Serial.begin(9600);
   dht.begin();
   
@@ -86,8 +89,13 @@ void loop() {
     Serial.println("OFF");
     digitalWrite(pumpPin,LOW);
   }
-  delay(100);
 
+  else if(fromSerial == "B"){
+    digitalWrite(ledPin,HIGH);
+  }
+  else if(fromSerial == "b"){
+    digitalWrite(ledPin,LOW);
+  }
   
-  
+    delay(100);
 }
