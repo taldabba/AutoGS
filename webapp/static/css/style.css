@@ -2,10 +2,24 @@ p {
 	font-family: 'Exo', sans-serif;
 }
 
+.logo-home {
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	align-items: center;
+	align-content: center;
+}
+
+.logo {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .led {
 	width: 600px;
 	height: 300px;
-	background-color: aquamarine;
 	align-items: center;
 	align-content: center;
 	margin-top: auto;
@@ -16,5 +30,70 @@ p {
 
 #led-header {
 	font-size: 64px;
-	margin-left: 10%;
+	font-weight: bold;
+	color: white;
+	-webkit-text-stroke: 3px black;
+	margin-left: 5%;
+	
+}
+
+#led-power {
+	width: 70px;
+	margin-left: 8.5%;
+	margin-top: -30%;
+	text-align: center;
+}
+
+#colour-box {
+	height:200px;
+	width:200px;
+	margin-top: -30%;
+	background:blue;
+	border: 5px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#change-colour {
+	font-weight: 400;
+	font-size: 20px;
+	margin-left: 72%;
+	margin-top: -20%;
+	font-style: italic;
+}
+
+.water {
+	background-color: blueviolet;
+	width: 600px;
+	height: 300px;
+	align-items: center;
+	align-content: center;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#water-text {
+	font-size: 48px;
+	font-weight: bold;
+	color: white;
+	-webkit-text-stroke: 2.5px black;
+	margin-left: 5%;
+}
+
+.water-buttons{
+	font-family: 'Exo', sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	margin-left: 5%;
+}
+
+input[type=radio] {
+    border: 0px;
+    width: 5%;
+    height: 1.5em;
+	margin-top: auto;
+	margin-bottom: auto;
+	display: inline-block;
 }

@@ -14,11 +14,36 @@
 
 </head>
 <body>
-	<img src="../static/images/" alt="">
+	<div class="logo-home">
+		<a href="interface.html">
+		<img class="logo" src="../static/images/autogs-logo.png" alt="AutoGS">
+		</a>
+	</div>
+
+
 	<div class="led">
 		<p id="led-header">LED</p>
-		<img src="../static/images/power.png" alt="Power">
+		<img id="led-power" src="../static/images/power.png" alt="Power">
+		<div id="colour-box">
+		</div>
+		<p id="change-colour">Change Colour</p>
 	</div>
+
+	<div class="water">
+		<p id="water-text">Watering</p>
+		<form action="">
+			<div class="water-buttons">
+			<input type="radio" id="automatic" value="AUTOMATIC">
+			<label for="automatic">Automatic</label>
+			<br>
+			<input type="radio" id="manual" value="MANUAL">
+			<label for="manual">Manual</label>
+		</div>
+		</form>
+	</div>
+
+
+	
 	
 </body>
 </html>
