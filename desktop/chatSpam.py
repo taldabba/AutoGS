@@ -14,9 +14,10 @@ for x in range(5):
 while True:
 	# print(position())
 	moveTo(630,700)
-	
+
 	spamPicture()
 	click()
+	time.sleep(0.1)
 
 
 
