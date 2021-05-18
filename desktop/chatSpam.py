@@ -11,7 +11,7 @@ for x in range(5):
 	print(f'SPAMMING IN: {x} SECONDS')
 	time.sleep(1)
 
-while True:
+for x in range(100):
 	# print(position())
 	moveTo(630,700)
 
