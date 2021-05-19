@@ -12,6 +12,7 @@ DHT dht(DHTPIN, DHTTYPE);
 
 String sensorStringLn1;
 String sensorStringLn2;
+String toSerial;
 
 int pumpPin  = 12;
 int ledPin = 11;
@@ -68,9 +69,10 @@ void loop() {
   
   
   sensorStringLn1 = "TMP:" + String(t) + "%  HUM:" + String(h) +"%";
-  sensorStringLn2 = "SL:" + String(percentageHumidity) + "%   WET";
+  sensorStringLn2 = "SL:" + String(percentageHumidity) + "%";
 
-  
+  toSerial  = String(t) + String(h) + String(percentageHumidity);
+  Serial.println(toSerial);
   
   lcd.clear();
   lcd.setCursor(0,0);
