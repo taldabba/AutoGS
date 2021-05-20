@@ -70,14 +70,14 @@ p {
 	transform: translate(0, 12.5%);
 }
 
-.colour-box {
+#colour-box {
 	height: 189px;
 	width: 189px;
 	background-color: khaki;
 	border: 5px solid black;
-
+	transition: background 100ms;
 }
-.led .colour-box {
+.led #colour-box {
 	position: absolute;
 	top: 0;
 	bottom: 0;

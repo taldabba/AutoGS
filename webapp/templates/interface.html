@@ -26,7 +26,7 @@
 			<p id="led-header">LED</p>
 			<img id="led-power" src="../static/images/power.png" alt="Power">
 		</div>
-		<div class="colour-box"></div>
+		<div id="colour-box"></div>
 		<div class="change-colour">
 			<p>Change Colour</p>
 		</div>
@@ -36,6 +36,19 @@
 			Blue <input type="range" min="0" max="255" step="1" id="blue" value="162">
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		var input = document.querySelectorAll("input");
+			for(var i = 0; i < input.length; i++){
+			input[i].addEventListener("input", function(){
+				var red = document.getElementById("red").value,
+					green = document.getElementById("green").value,
+					blue = document.getElementById("blue").value;
+					var display = document.getElementById("colour-box");
+				display.style.background = "rgb(" + red + ", " + green + ", " + blue + ")";
+			});
+		}
+	</script>
 
 	<br><br><br><br>
 
