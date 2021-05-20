@@ -12,6 +12,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Exo:ital@0;1&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="../static/js/script.js"> </script>
+
 </head>
 <body>
 	<div class="logo-home">
@@ -36,6 +37,19 @@
 		</div>
 	</div>
 
+	<script type="text/javascript">
+		var input = document.querySelectorAll("input");
+			for(var i = 0; i < input.length; i++){
+			input[i].addEventListener("input", function(){
+				var red = document.getElementById("red").value,
+					green = document.getElementById("green").value,
+					blue = document.getElementById("blue").value;
+					var display = document.getElementById("colour-box");
+				display.style.background = "rgb(" + red + ", " + green + ", " + blue + ")";
+			});
+		}
+	</script>
+
 	<br><br><br><br>
 
 	<div class="water">
@@ -55,5 +69,8 @@
 		</div>
 	</div>
 
+
+	
+	
 </body>
 </html>
