@@ -48,6 +48,7 @@ void setup() {
   pinMode(ledPin,OUTPUT);
   
   Serial.begin(9600);
+  Serial.setTimeout(10);
   dht.begin();
   
   lcd.begin(16,2);
