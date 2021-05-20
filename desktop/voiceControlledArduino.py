@@ -17,7 +17,7 @@ def sendSerial(messageChar):
 
 def get_audio():
 	r = sr.Recognizer()
-	r.energy_threshold = 2000
+	r.energy_threshold = 2500
 	with sr.Microphone() as source:
 		audio = r.listen(source)
 
@@ -33,15 +33,35 @@ def get_audio():
 
 
 while True:
-	voiceInput = get_audio()
-	if "red light on" in voiceInput:
-		# print("Red has been turned on bro")		
-		# for x in range(5):
-		sendSerial('A')
-	elif "red light off" in voiceInput:
-		sendSerial('a')
-	elif "blue light on" in voiceInput:
-		sendSerial('B')
-	elif "blue light off" in voiceInput:
-		sendSerial('b')
+
+
+
+	userInput = input("enter 1 to capture voice or 2 to quit: ")
+	if userInput == "1":
+		print("listening to your voice now!")
+		voiceInput = get_audio()
+		print(f"You said{voiceInput}")
+
+		if "relay on" in voiceInput:
+			# print("Red has been turned on bro")		
+			# for x in range(5):
+			sendSerial('A')
+		elif "relay off" in voiceInput:
+			sendSerial('a')
+		elif "red light on" in voiceInput:
+			sendSerial('B')
+		elif "red light off" in voiceInput:
+			sendSerial('b')
+
+
+
+
+
+
+
+	elif userInput == "2":
+		ser.close()
+		print("thanks for using bro!!!")
+		break
+
 
