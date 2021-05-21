@@ -73,7 +73,7 @@ p {
 #colour-box {
 	height: 189px;
 	width: 189px;
-	background-color: khaki;
+	background-color: white;
 	border: 5px solid black;
 	transition: background 100ms;
 }
