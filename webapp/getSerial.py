@@ -28,7 +28,8 @@ class serialPort:
 		ser.flush()
 		if(ser.in_waiting > 0):
 			line = ser.readline()
-			print(line.decode())
+			# print(line.decode())
+			return line.decode()
 	def reset(self):
 		ser.close()
 		ser.open()
@@ -52,8 +53,17 @@ def serialFunc(q):
 		if not q.empty():
 			fromQ = q.get()
 
-			if fromQ == "A":
-				myPort.sendStuff()
+			if fromQ != "reset":
+				myPort.sendStuff(fromQ)
+				time.sleep(0.5)
+			elif fromQ == "reset":
+				myPort.reset()
+			elif fromQ == "close":
+				myPort.closeSerial()
+				break
+
+		else:
+			getStuff()
 
 
 
