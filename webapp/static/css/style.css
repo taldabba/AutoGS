@@ -129,15 +129,36 @@ p {
 	width: 600px;
 }
 
-#textbox {
+.textbox {
 	font-weight: lighter;
 	font-size: 12px;
+	font-style: italic;
+	position: relative;
+	top: -5px;
+}
+#textbox-auto {
+	margin-left: 30px;
+}
+#textbox-manual {
+	margin-left: 75px;
+}
+
+.water-submit {
+	height: 40px;
+	width: fit-content;
+	background: springgreen;
+}
+
+.water .water-submit {
+	position: relative;
+	left: -1%;
+	right: 10%;
+	margin: auto;
 }
 
 .water .water-form {
-
 	position: absolute;
-	top: 25px;
+	top: 50px;
 	bottom: 0;
 	margin: auto;
 }
@@ -147,6 +168,12 @@ p {
 	font-size: 30px;
 	font-weight: 600;
 	margin-left: 5%;
+	position: relative;
+}
+
+.water-textbox {
+	float: right;
+	margin-top: 10px;
 }
 
 input[type=radio] {

@@ -77,15 +77,25 @@
 		<div class="water-form">
 			<form action="">
 				<div class="water-buttons">
-				<input name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
-				<label for="automatic">Automatic</label>			
-				<label for="autoWaterHumidityDrop" id="textbox">Water if humidity drops below: </label>
-				<input type="text" id="autoWaterHumidityDrop">
-				<br>
-				<input name="wateroption" type="radio" id="manual" value="MANUAL">
-				<label for="manual">Manual</label>
-				<label for="manualWaterTime" id="textbox">Water for how many seconds:</label>
-				<input type="text" id="manualWaterTime">
+					<input name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
+					<label for="automatic">Automatic</label>			
+
+					<label id="textbox-auto" for="autoWaterHumidityDrop" class="textbox">Water if humidity drops below: </label>
+					<input class="water-textbox" type="text" id="autoWaterHumidityDrop">
+
+					<br>
+
+					<input name="wateroption" type="radio" id="manual" value="MANUAL">
+					<label for="manual">Manual</label>
+
+					<label for="manualWaterTime" id="textbox-manual" class="textbox">Water for how many seconds:</label>
+					<input class="water-textbox" type="text" id="manualWaterTime">
+
+					<br>
+
+					<div class="water-submit">
+						<input id="water-submit" type="submit">
+					</div>
 				</div>
 			</form>
 		</div>
