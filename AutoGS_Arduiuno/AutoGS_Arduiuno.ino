@@ -70,7 +70,7 @@ void loop() {
   sensorStringLn1 = "TMP:" + String(t) + "%  HUM:" + String(h) +"%";
   sensorStringLn2 = "SL:" + String(percentageHumidity) + "%   WET";
 
-  
+ Serial.println(String(t)+String(h)+String(percentageHumidity))
   
   lcd.clear();
   lcd.setCursor(0,0);
