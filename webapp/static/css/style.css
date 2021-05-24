@@ -2,7 +2,9 @@ p {
 	font-family: 'Exo', sans-serif;
 }
 
+/* ============================================== */
 /* LED Section */
+/* ============================================== */
 
 .logo-home {
 	background-color: lightgreen;
@@ -103,7 +105,9 @@ p {
 	margin: auto;
 }
 
+/* ============================================== */
 /* Watering Section */
+/* ============================================== */
 
 .water {
 	background-color: olivedrab;
@@ -185,4 +189,39 @@ input[type=radio] {
 	margin-top: auto;
 	margin-bottom: auto;
 	display: inline-block;
+}
+
+/* ============================================== */
+/* Data Section */
+/* ============================================== */
+
+.data {
+	background-color:turquoise;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -1%;
+	width: 600px;
+	height: 150px;
+}
+
+.data-text {
+	background-color:thistle;
+	width: fit-content;
+	height: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.datalist {
+	background-color:tomato;
+	width: fit-content;
+	height: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -40px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
 }
