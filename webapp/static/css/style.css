@@ -7,7 +7,6 @@ p {
 /* ============================================== */
 
 .logo-home {
-	background-color: lightgreen;
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -23,7 +22,6 @@ p {
 }
 
 .led {
-	background-color:blueviolet;
 	width: 600px;
 	height: 200px;
 	align-items: center;
@@ -35,7 +33,6 @@ p {
 }
 
 .change-colour {
-	background-color: limegreen;
 	font-weight: 400;
 	font-size: 20px;
 	font-style: italic;
@@ -52,7 +49,6 @@ p {
 }
 
 .led-power {
-	background-color: lightpink;
 	margin-left: 42.5px;
 	width: fit-content;
 	height: fit-content;
@@ -91,7 +87,6 @@ p {
 }
 
 .colour-changer {
-	background-color: mediumvioletred;
 	height: fit-content;
 	font-family: 'Exo', sans-serif;
 	text-align: center;
@@ -110,7 +105,6 @@ p {
 /* ============================================== */
 
 .water {
-	background-color: olivedrab;
 	width: 600px;
 	height: 200px;
 	align-items: center;
@@ -131,7 +125,6 @@ p {
 }
 
 .water-form {
-	background-color: darkorchid;
 	height: fit-content;
 	width: 600px;
 }
@@ -173,11 +166,10 @@ p {
 .water-submit {
 	height: 40px;
 	width: fit-content;
-	background: springgreen;
 }
 .water .water-submit {
 	position: relative;
-	left: -1%;
+	left: -2.5%;
 	right: 10%;
 	margin: auto;
 }
@@ -196,7 +188,6 @@ input[type=radio] {
 /* ============================================== */
 
 .data {
-	background-color:turquoise;
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
@@ -206,7 +197,6 @@ input[type=radio] {
 }
 
 .data-text {
-	background-color:thistle;
 	width: fit-content;
 	height: fit-content;
 	margin-left: auto;
@@ -215,7 +205,6 @@ input[type=radio] {
 }
 
 .datalist {
-	background-color:tomato;
 	width: fit-content;
 	height: fit-content;
 	margin-left: auto;
