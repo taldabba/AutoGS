@@ -31,11 +31,29 @@
 			<p>Change Colour</p>
 		</div>
 		<div class="colour-changer">
-			Red <input type="range" min="0" max="255" step="1" id="red" value="115">
-			Green <input type="range" min="0" max="255" step="1" id="green" value="10">
-			Blue <input type="range" min="0" max="255" step="1" id="blue" value="162">
+			<form action="/" method="POST">
+				Red <input type="range" min="0" max="255" step="1" id="red" value="115" id="redLedValue">
+				Green <input type="range" min="0" max="255" step="1" id="green" value="10" id="greenLedValue">
+				Blue <input type="range" min="0" max="255" step="1" id="blue" value="162" id="blueLedValue">
+				<br>
+				<input type="submit" name="Send">
+			</form>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		var redSlider = doceument.getElementById("redLedValue");
+		var greenSlider = doceument.getElementById("greenLedValue");
+		var bluelider = doceument.getElementById("blueLedValue");
+
+		redSlider.oninput = function() {
+
+		}
+
+		redSlider.onmouseup = function() {
+			document.getElementById("form").submit();
+		}
+	</script>
 
 	<script type="text/javascript">
 		var input = document.querySelectorAll("input");
@@ -60,10 +78,14 @@
 			<form action="">
 				<div class="water-buttons">
 				<input name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
-				<label for="automatic">Automatic</label>
+				<label for="automatic">Automatic</label>			
+				<label for="autoWaterHumidityDrop" id="textbox">Water if humidity drops below: </label>
+				<input type="text" id="autoWaterHumidityDrop">
 				<br>
 				<input name="wateroption" type="radio" id="manual" value="MANUAL">
 				<label for="manual">Manual</label>
+				<label for="manualWaterTime" id="textbox">Water for how many seconds:</label>
+				<input type="text" id="manualWaterTime">
 				</div>
 			</form>
 		</div>
