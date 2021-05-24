@@ -31,20 +31,20 @@
 			<p>Change Colour</p>
 		</div>
 		<div class="colour-changer">
-			<form action="/" method="POST">
-				Red <input type="range" min="0" max="255" step="1" id="red" value="115" id="redLedValue">
-				Green <input type="range" min="0" max="255" step="1" id="green" value="10" id="greenLedValue">
-				Blue <input type="range" min="0" max="255" step="1" id="blue" value="162" id="blueLedValue">
+			<form action="#" method="POST">
+				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="115" id="redLedValue">
+				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="10" id="greenLedValue">
+				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="162" id="blueLedValue">
 				<br>
-				<input type="submit" name="Send">
+				<input type="submit" value="submit" name="Send">
 			</form>
 		</div>
 	</div>
 
 	<script type="text/javascript">
-		var redSlider = doceument.getElementById("redLedValue");
-		var greenSlider = doceument.getElementById("greenLedValue");
-		var bluelider = doceument.getElementById("blueLedValue");
+		var redSlider = document.getElementById("redLedValue").value;
+		var greenSlider = document.getElementById("greenLedValue").value;
+		var bluelider = document.getElementById("blueLedValue").value;
 
 		redSlider.oninput = function() {
 
