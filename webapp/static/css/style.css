@@ -2,6 +2,8 @@ p {
 	font-family: 'Exo', sans-serif;
 }
 
+/* LED Section */
+
 .logo-home {
 	background-color: lightgreen;
 	width: 400px;
@@ -101,6 +103,8 @@ p {
 	margin: auto;
 }
 
+/* Watering Section */
+
 .water {
 	background-color: olivedrab;
 	width: 600px;
@@ -113,7 +117,6 @@ p {
 	margin-right: auto;
 	position: relative;
 }
-
 
 #water-text {
 	font-size: 48px;
@@ -128,34 +131,6 @@ p {
 	height: fit-content;
 	width: 600px;
 }
-
-.textbox {
-	font-weight: lighter;
-	font-size: 12px;
-	font-style: italic;
-	position: relative;
-	top: -5px;
-}
-#textbox-auto {
-	margin-left: 30px;
-}
-#textbox-manual {
-	margin-left: 75px;
-}
-
-.water-submit {
-	height: 40px;
-	width: fit-content;
-	background: springgreen;
-}
-
-.water .water-submit {
-	position: relative;
-	left: -1%;
-	right: 10%;
-	margin: auto;
-}
-
 .water .water-form {
 	position: absolute;
 	top: 50px;
@@ -174,6 +149,33 @@ p {
 .water-textbox {
 	float: right;
 	margin-top: 10px;
+}
+
+#textbox-auto {
+	margin-left: 30px;
+}
+#textbox-manual {
+	margin-left: 75px;
+}
+
+.textbox {
+	font-weight: lighter;
+	font-size: 12px;
+	font-style: italic;
+	position: relative;
+	top: -5px;
+}
+
+.water-submit {
+	height: 40px;
+	width: fit-content;
+	background: springgreen;
+}
+.water .water-submit {
+	position: relative;
+	left: -1%;
+	right: 10%;
+	margin: auto;
 }
 
 input[type=radio] {
