@@ -63,7 +63,8 @@ def serialFunc(q):
 				break
 
 		else:
-			getStuff()
+			myPort.getStuff()
+			time.sleep(0.15)
 
 
 
