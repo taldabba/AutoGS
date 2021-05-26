@@ -1,10 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
+#include <WiFiClient.h>
  
 void setup () {
  
   Serial.begin(115200);
-  WiFi.begin("YourNetwork", "YouNetworkPassword");
+  WiFi.begin("unit2803", "platinum2803n2");
  
   while (WiFi.status() != WL_CONNECTED) {
  
@@ -21,8 +22,8 @@ void loop() {
   if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
  
     HTTPClient http;  //Declare an object of class HTTPClient
- 
-    http.begin("http://192.168.1.88:8090/helloesp"); //Specify request destination
+    WiFiClient wifi;
+    http.begin(wifi,"http://192.168.0.123:8090/helloesp"); //Specify request destination
  
     int httpCode = http.GET(); //Send the request
  
