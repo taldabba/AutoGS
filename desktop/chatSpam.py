@@ -12,11 +12,13 @@ for x in range(3):
 	time.sleep(1)
 
 while True:
-	print(position())
 	for x in range(1000):
+		print(position())
+		
 		moveTo(630,700)		
 		spamPicture()
 		click()
+
 
 
 
@@ -29,4 +31,4 @@ while True:
 # 🤣sussy imposter XD 🤣
 #XD
 
-XDXD
+
