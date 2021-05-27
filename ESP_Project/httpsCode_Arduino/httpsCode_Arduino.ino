@@ -4,6 +4,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
 #include <SPI.h>
+#include <string.h>
 
 #include "DHTesp.h"
 #ifdef ESP32
@@ -19,8 +20,9 @@ void setup () {
   Serial.begin(115200);
    
   dht.setup(16, DHTesp::DHT22); //dht setup
-
   lcd.begin(16,2);//lcd setup
+  pinMode(BUILTIN_LED, OUTPUT);//led setup
+  
   //wifi setup
   WiFi.begin("unit2803", "platinum2803n2"); 
   while (WiFi.status() != WL_CONNECTED) { 
@@ -62,6 +64,42 @@ void sendToWebserver(int temperature, int humidity, int soilMoisturePercent) {
   }
 }
 
+String getFlaskCommands(){
+  String payload;
+  if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
+ 
+    HTTPClient http;  //Declare an object of class HTTPClient
+    WiFiClient wifi;
+    http.begin(wifi,"http://192.168.0.123:8090/espcommands"); //Specify request destination
+
+    int httpCode = http.GET(); //Send the request
+ 
+    if (httpCode > 0) { //Check the returning code
+ 
+      payload = http.getString();   //Get the request response payload      
+ 
+    }else Serial.println("An error ocurred");
+ 
+    http.end();   //Close connection 
+  }
+
+  return payload;
+  
+}
+
+void parsePayload(String payload){
+
+  if (payload.substring(0,1) == "1"){
+    Serial.println("bruh");
+    pinMode(BUILTIN_LED, OUTPUT);
+  }
+  else if (payload.substring(0,1) == "0")  {
+    pinMode(BUILTIN_LED, OUTPUT);
+  }
+}
+
+
+
 void loop() {
   const int AirValue = 654;   
   const int WaterValue = 305; 
@@ -75,7 +113,9 @@ void loop() {
   soilMoisturePercent = map(soilMoistureValue, AirValue, WaterValue, 0, 100);
   
   displayLCD(temperature,humidity, soilMoisturePercent );
-  sendToWebserver(temperature,humidity, soilMoisturePercent );
+  sendToWebserver(temperature,humidity, soilMoisturePercent);
+  parsePayload(getFlaskCommands());
+
   
   delay(2000);    //Send a request every 10 seconds
 } 
