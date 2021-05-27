@@ -16,7 +16,7 @@ int soilMoistureValue = 0;
 int soilMoisturePercent=0;
 
 DHTesp dht;
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 void setup()
 {
   Serial.begin(115200);
@@ -26,13 +26,14 @@ void setup()
   // dht.setup(17);
   // use this instead: 
   dht.setup(16, DHTesp::DHT22); // Connect DHT sensor to GPIO 5
-  lcd.begin();
+  lcd.begin(16,2);
   lcd.setCursor(0,0);
-  lcd.print("Hello");
+  
 }
 void loop()
 {
-  delay(2000);
+  lcd.setCursor(0,0);
+  lcd.print("Hello");  
   float humidity = dht.getHumidity();
   float temperature = dht.getTemperature();
 
@@ -47,4 +48,6 @@ void loop()
   Serial.print(temperature, 1);
   Serial.print("\t");
   Serial.println(soilMoisturePercent);
+  delay(2000);
+  lcd.clear();
 }
