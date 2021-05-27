@@ -34,8 +34,8 @@ void loop()
 {
   lcd.setCursor(0,0);
   lcd.print("Hello");  
-  float humidity = dht.getHumidity();
-  float temperature = dht.getTemperature();
+  int humidity = round(dht.getHumidity());
+  int temperature = round(dht.getTemperature());
 
   soilMoistureValue = analogRead(SensorPin);  //put Sensor insert into soil
   soilMoisturePercent = map(soilMoistureValue, AirValue, WaterValue, 0, 100);
@@ -48,6 +48,19 @@ void loop()
   Serial.print(temperature, 1);
   Serial.print("\t");
   Serial.println(soilMoisturePercent);
+
+  String sensorStringLn1 = "TMP:" + String(temperature) + "%  HUM:" + String(humidity) +"%";
+  String sensorStringLn2 = "SL:" + String(soilMoisturePercent) + "%";
+
+
+  
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(sensorStringLn1);
+  lcd.setCursor(0,2);
+  lcd.print(sensorStringLn2);
+
+  
   delay(2000);
   lcd.clear();
 }
