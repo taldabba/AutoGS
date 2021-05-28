@@ -22,9 +22,25 @@ int rgbLED (int powerLED, int redValue, int greenValue, int blueValue) {
 }
 
 void setup() {
-
+  
 }
 
+
+
+
+  int r = 1;
+//  int g = 1;
+//  int b = 1;
 void loop() {
+
+
+
+  r+=1;
+  // g+=1;
+  // b+=1;
+
+  rgbLED(1, r, g, b);
+  
+  delay(500);
 
 }
