@@ -1,51 +1,227 @@
-.red-led-button {
-
-	background-color:#e82020;
-	width:800px;
-	height:200px;
-	border:2px solid black;
+p {
+	font-family: 'Exo', sans-serif;
 }
 
-.red-led-button:hover {
-	
-	background-color:#cf1f1f
+/* ============================================== */
+/* LED Section */
+/* ============================================== */
 
+.logo-home {
+	background-color: lightgreen;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	align-items: center;
+	align-content: center;
 }
 
-.blue-led-button {
-	
-	text-align:center;	
-	background-color:#226ff2;
-	width:800px;
-	height:200px;
-		border:2px solid black;
+.logo {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.blue-led-button:hover {
-		
-	background-color:#1f60cf;
+.led {
+	background-color:blueviolet;
+	width: 600px;
+	height: 200px;
+	align-items: center;
+	align-content: center;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
 }
 
-.green-led-button {
-	
-	text-align:center;
-	background-color:#41f222;
-	width:800px;
-	height:200px;
-	border:2px solid black;
+.change-colour {
+	background-color: limegreen;
+	font-weight: 400;
+	font-size: 20px;
+	font-style: italic;
+	text-align: center;
+}
+.led .change-colour {
+	height: fit-content;
+	width: fit-content;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 35px;
+	margin: auto;
 }
 
-.green-led-button:hover {
-	
-	align:center;
-	background-color:#39d61e;
+.led-power {
+	background-color: lightpink;
+	margin-left: 42.5px;
+	width: fit-content;
+	height: fit-content;
+}
+#led-header {
+	font-size: 64px;
+	font-weight: bold;
+	color: white;
+	-webkit-text-stroke: 3px black;
+	text-align: center;
+}
+#led-power {
+	width: 70px;
+	display: block;
+	margin: -60px 20px;
+}
+.led .led-power {
+	position: relative;
+	transform: translate(0, 12.5%);
 }
 
-h2 {
-	font-family:Helvetica;
-	padding-bottom:0px;
+#colour-box {
+	height: 189px;
+	width: 189px;
+	background-color: white;
+	border: 5px solid black;
+	transition: background 100ms;
+}
+.led #colour-box {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 
-form {
+.colour-changer {
+	background-color: mediumvioletred;
+	height: fit-content;
+	font-family: 'Exo', sans-serif;
+	text-align: center;
+	position: absolute;
+	bottom: -55px;
+}
+.led .colour-changer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
 
+/* ============================================== */
+/* Watering Section */
+/* ============================================== */
+
+.water {
+	background-color: olivedrab;
+	width: 600px;
+	height: 200px;
+	align-items: center;
+	align-content: center;
+	margin-top: -30px;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+#water-text {
+	font-size: 48px;
+	font-weight: bold;
+	color: white;
+	-webkit-text-stroke: 2.5px black;
+	text-align: center;
+}
+
+.water-form {
+	background-color: darkorchid;
+	height: fit-content;
+	width: 600px;
+}
+.water .water-form {
+	position: absolute;
+	top: 50px;
+	bottom: 0;
+	margin: auto;
+}
+
+.water-buttons{
+	font-family: 'Exo', sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	margin-left: 5%;
+	position: relative;
+}
+
+.water-textbox {
+	float: right;
+	margin-top: 10px;
+}
+
+#textbox-auto {
+	margin-left: 30px;
+}
+#textbox-manual {
+	margin-left: 75px;
+}
+
+.textbox {
+	font-weight: lighter;
+	font-size: 12px;
+	font-style: italic;
+	position: relative;
+	top: -5px;
+}
+
+.water-submit {
+	height: 40px;
+	width: fit-content;
+	background: springgreen;
+}
+.water .water-submit {
+	position: relative;
+	left: -2.5%;
+	right: 10%;
+	margin: auto;
+}
+
+input[type=radio] {
+    border: 0px;
+    width: 3%;
+    height: 1.5em;
+	margin-top: auto;
+	margin-bottom: auto;
+	display: inline-block;
+}
+
+/* ============================================== */
+/* Data Section */
+/* ============================================== */
+
+.data {
+	background-color:turquoise;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -1%;
+	width: 600px;
+	height: 150px;
+}
+
+.data-text {
+	background-color:thistle;
+	width: fit-content;
+	height: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.datalist {
+	background-color:tomato;
+	width: fit-content;
+	height: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -40px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
 }
