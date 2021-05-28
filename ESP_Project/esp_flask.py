@@ -1,72 +1,99 @@
 from flask import Flask,render_template, request, redirect, url_for
+import logging
  
-queue = []
 
 
-class espcommand:
+ledState = False
+
+class sensorQueue:
 	def __init__(self):
-		pass
+		self.que = []
+		self.latestValue = 0
+	def add(self,newValue):
+		self.que.clear()
+		self.que.append(newValue)
+		self.latestValue = newValue
+	def get(self):
+		if not self.que:
+			return self.latestValue
+		value = self.que.pop()
+		return value
 
-	# def turnOnLed
+temperatureQue = sensorQueue()
+humidityQue = sensorQueue()
+soilMoistureQue = sensorQueue()
 
 
+class buttonToggle:
+	def __init__(ledColour,onMsg,offMsg):
+		ledColour.onMsg = onMsg
+		ledColour.offMsg = offMsg
+		ledColour.state = False
 
+	def toggleState(ledColour):
+		ledColour.state = not ledColour.state
+	def reset(ledColour):
+		ledColour.state = False
 
+led = buttonToggle("1","0")
 
 
 app = Flask(__name__)
+
+@app.route("/temperature", methods = ["POST","GET"])
+def temperature():
+	# data = temperatureQueue.pop(0)
+	data = temperatureQue.get()
+	return str(data);
+
+@app.route("/humidity", methods = ["POST","GET"])
+def humidity():
+	data = humidityQue.get()
+	return str(data);
+
+
+@app.route("/soilmoisture", methods= ["POST","GET"])
+def soilmoisture():
+	data = soilMoistureQue.get()
+
+	return str(data) + '';
+
 
 @app.route('/helloesp')
 def helloHandler():
 	temperature = request.args.get("temperature")
 	humidity = request.args.get("humidity")
 	soilMoisturePercent = request.args.get("soilMoisturePercent")
+
+	
+	temperatureQue.add(temperature)
+	humidityQue.add(humidity)
+	soilMoistureQue.add(soilMoisturePercent)
+
+
+
+
+
 	return f'Hello ESP8266, from Flask -- temperature={temperature}, humidity={humidity}, soilMoisturePercent={soilMoisturePercent} '
 
 @app.route('/espcommands')
 def commands():
-	return '1'
+	commandString = ''
+	if led.state:
+		commandString += led.onMsg
+	else:
+		commandString += led.offMsg
+	# app.logger.info(commandString)
+	return commandString
 
 @app.route("/",methods = ["POST","GET"])
 def home():
 
 	if request.method == "POST":
-		user = ""
-		lcdText = ""
-		try: 
-			user = request.form["led-button"]
-		except:
-			lcdText = request.form["lcd"]
-		
-		if user == "RED_BUTTON":			
-			redButton.toggleState()
-			if redButton.state == True:
-				myPort.led(redButton.onMsg)			
-			else:
-				myPort.led(redButton.offMsg)
-		elif user == "GREEN_BUTTON":
-			greenButton.toggleState()
-			if greenButton.state == True:
-				myPort.led(greenButton.onMsg)			
-			else:
-				myPort.led(greenButton.offMsg)
-		elif user == "BLUE_BUTTON":
-			blueButton.toggleState()
-			if blueButton.state == True:
-				myPort.led(blueButton.onMsg)			
-			else:
-				myPort.led(blueButton.offMsg)
+		user = request.form["led-button"]
 
-		elif user == "RESET":
-			myPort.reset()
-			redButton.reset()
-			blueButton.reset()
-			greenButton.reset()
-		elif user == "SENSOR":
-			myPort.led(user)
-
-		else:
-			myPort.toLcd(lcdText)
+		if user == "ledToggle":
+			led.toggleState()
 
 		return render_template("interface.html")
 	else:

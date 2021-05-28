@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>
+			AutoGS
+		</title>
+		<script>
+			window.onload = function() {
+					readSensor("temperature");
+					readSensor("humidity");
+					readSensor("soilmoisture");
+					setInterval(loadSensors, 2.5 * 1000);
+			}
+			
+			function loadSensors() {
+				console.log("test");
+				readSensor("temperature");
+				readSensor("humidity");
+				readSensor("soilmoisture");
+
+			}
+			function readSensor(sensor) {
+				
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    	document.getElementById(sensor).innerHTML =  this.responseText;
+			    }
+			  };
+			  xhttp.open("GET", sensor, true);
+			  xhttp.send();
+			}
+		</script>
+	</head>
+	
+	<body>
+	<center>
+		<form action='#' method= "post">
+			
+			<button name="led-button" type="submit" value="ledToggle">Turn on Led</button>	
+
+
+		</form>
+		<div><span>Temperature=</span><span id="temperature"></span></div>
+		<div><span>Humidity=</span><span id="humidity"></span></div>
+		<div><span>Soil Moisture=</span><span id="soilmoisture"></span></div>
+
+
+	</center>
+	
+	</body>
+
+</html>

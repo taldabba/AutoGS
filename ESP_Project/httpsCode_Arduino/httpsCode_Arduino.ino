@@ -91,10 +91,11 @@ void parsePayload(String payload){
 
   if (payload.substring(0,1) == "1"){
     Serial.println("bruh");
-    pinMode(BUILTIN_LED, OUTPUT);
+    digitalWrite(BUILTIN_LED,HIGH);
+    
   }
   else if (payload.substring(0,1) == "0")  {
-    pinMode(BUILTIN_LED, OUTPUT);
+    digitalWrite(BUILTIN_LED,LOW);
   }
 }
 
