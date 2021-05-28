@@ -24,7 +24,7 @@ void setup () {
   pinMode(BUILTIN_LED, OUTPUT);//led setup
   
   //wifi setup
-  WiFi.begin("unit2803", "platinum2803n2"); 
+  WiFi.begin("BELL043", "4DCC2A9CAC27"); 
   while (WiFi.status() != WL_CONNECTED) { 
     delay(1000);
     Serial.println("Connecting.."); 
