@@ -15,6 +15,35 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 </head>
+<script>
+			window.onload = function() {
+					readSensor("temperature");
+					readSensor("humidity");
+					readSensor("soilmoisture");
+					setInterval(loadSensors, 2.5 * 1000);
+			}
+			
+			function loadSensors() {
+				console.log("test");
+				readSensor("temperature");
+				readSensor("humidity");
+				readSensor("soilmoisture");
+
+			}
+			function readSensor(sensor) {
+				
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    	document.getElementById(sensor).innerHTML =  this.responseText;
+			    }
+			  };
+			  xhttp.open("GET", sensor, true);
+			  xhttp.send();
+			}
+		</script>
+
+
 <body>
 	<div class="logo-home">
 		<a href="interface.html">
@@ -25,9 +54,17 @@
 	<div class="led">
 		<div class="led-power">
 			<p id="led-header">LED</p>
-			<form action="#" method="POST">
-				<input id="led-power" type="image" name="submit_led" value="ledToggle" alt="LED Power" src="../static/images/power.png">
+
+
+
+			<form action="#" method="post">
+				<button id="led-power" type="image" name="led-button" value="ledToggle" alt="LED Power"cd src="../static/images/power.png"></button>
 			</form>
+
+<!--   -----------------
+ -->
+
+
 		</div>
 		<div id="colour-box"></div>
 		<div class="change-colour">
@@ -128,11 +165,9 @@
 		</div>
 		<div class="datalist">
 			<p>
-				Temperature:
-				<br>
-				Humidity:
-				<br>
-				Soil Moisture:
+				<div><span>Temperature=</span><span id="temperature"></span></div>		
+				<div><span>Humidity=</span><span id="humidity"></span></div>			
+				<div><span>Soil Moisture=</span><span id="soilmoisture"></span></div>
 			</p>
 		</div>
 	</div>
