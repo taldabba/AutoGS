@@ -117,9 +117,25 @@
 			document.getElementById("autoWaterHumidityDrop").disabled = true;
 			document.getElementById("manualWaterTime").disabled = false;
 		}
-		
 
-  	
+	window.onbeforeunload = function() {
+		localStorage.setItem("auto", $('#textbox-auto').val());
+		localStorage.setItem("manual", $('#textbox-manual').val());
+	}
+
+	window.onload = function() {
+		var auto = localStorage.getItem("auto");
+		if (auto !== null) $('#textbox-auto').val("auto");
+		var manual = localStorage.getItem("manual");
+		if (manual !== null) $('#textbox-manual').val("manual");
+	}
+
+	function waterButton() {
+		if (document.getElementById('automatic').checked) {
+			document.getElementById()
+		}
+	}
+		
 	</script>
 
 	<div class="data">
