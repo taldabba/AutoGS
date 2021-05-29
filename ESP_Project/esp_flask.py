@@ -34,9 +34,14 @@ class buttonToggle:
 		ledColour.state = not ledColour.state
 	def reset(ledColour):
 		ledColour.state = False
+	def curMessage(self):
+		if self.state == True:
+			return self.onMsg
+		else: 
+			return self.offMsg
 
 led = buttonToggle("1","0")
-
+relay = buttonToggle("a","b")
 
 app = Flask(__name__)
 
@@ -79,10 +84,15 @@ def helloHandler():
 @app.route('/espcommands')
 def commands():
 	commandString = ''
-	if led.state:
-		commandString += led.onMsg
-	else:
-		commandString += led.offMsg
+	
+	commandString+= led.curMessage()
+	commandString+= relay.curMessage()
+
+
+	# if led.tate:
+	# 	commandString += led.onMsg
+	# else:
+	# 	commandString += led.offMsgs
 	# app.logger.info(commandString)
 	return commandString
 
@@ -94,8 +104,11 @@ def home():
 
 		if user == "ledToggle":
 			led.toggleState()
+		elif user == "waterToggle":
+			relay.toggleState()
+
 # old-interface.html
-		return render_template("interface.html")
+		return render_template("old-interface.html")
 	else:
-		return render_template("interface.html")
+		return render_template("old-interface.html")
 app.run(host='0.0.0.0', port= 8090,debug=True)
