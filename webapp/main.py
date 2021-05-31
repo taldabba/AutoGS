@@ -10,6 +10,19 @@ def getPost(app, name):
     except:
         return False
 
+
+
+@app.route("/changeRGB")
+def rgbChange():
+	red = request.args.get("red")
+	green = request.args.get("green")
+	blue = request.args.get("blue")
+
+	
+
+
+
+
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "POST":
@@ -25,5 +38,8 @@ def home():
     else:
         return render_template("interface.html")
 
+
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
