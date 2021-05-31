@@ -122,15 +122,15 @@ def commands():
 @app.route("/",methods = ["POST","GET"])
 def home():
 
-    if request.method == "POST":
-        getPost(app, "led-button")
-        if (getPost(app, "led-button")):
-            app.logger.info("bruhLEDChungus")
-            led.toggleState()
-        elif (getPost(app, "sendRGB")):
-            app.logger.info("rgbChungus")
-        elif (getPost(app, "waterSend")):
-            app.logger.info("waterChungus")
+	if request.method == "POST":
+		getPost(app, "led-button")
+		if (getPost(app, "led-button")):
+			app.logger.info("bruhLEDChungus")
+			led.toggleState()
+		elif (getPost(app, "sendRGB")):
+			app.logger.info("rgbChungus")
+		elif (getPost(app, "waterSend")):
+			app.logger.info("waterChungus")
 
 
     # relay.toggleState()
