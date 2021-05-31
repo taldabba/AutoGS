@@ -18,7 +18,7 @@ def rgbChange():
 	green = request.args.get("green")
 	blue = request.args.get("blue")
 
-	
+	return 'bruh'
 
 
 
