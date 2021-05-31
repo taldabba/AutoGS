@@ -42,6 +42,26 @@
 	}
 </script>
 
+<script type="text/javascript">
+
+function postRGBValues() {
+	var redSlider = document.getElementById("red").value;
+	var greenSlider = document.getElementById("green").value;
+	var blueSlider = document.getElementById("blue").value;
+
+	console.log(redSlider);
+	console.log(greenSlider);
+	console.log(blueSlider);
+}
+
+</script>
+
+
+
+
+
+
+
 <body>
 	<div class="logo-home">
 		<a href="interface.html">
@@ -68,11 +88,17 @@
 		</div>
 		<div id="colour-changer"class="colour-changer">
 			<form id="rgbForm" action="#" method="POST">
-				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255" id="redLedValue">
-				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255" id="greenLedValue">
-				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" id="blueLedValue">
+				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255">
+				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255">
+				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" >
 				<br>
-				<input type="submit" value="Submit" name="sendRGB">
+
+
+
+
+
+
+				<input type="submit" value="Submit" name="sendRGB" onclick="postRGBValues();">
 			</form>
 		</div>
 	</div>
@@ -93,15 +119,7 @@
 		}
 	</script> -->
 
-	<script type="text/javascript">
-	
-	function postRGBValues() {
-		var redSlider = document.getElementById("redLedValue").value;
-		var greenSlider = document.getElementById("greenLedValue").value;
-		var blueSlider = document.getElementById("blueLedValue").value;
-	}
 
-	</script>
 
 	<script type="text/javascript"> // RGB slider display 
 		var input = document.querySelectorAll("input");
