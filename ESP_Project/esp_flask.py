@@ -43,7 +43,30 @@ class buttonToggle:
 led = buttonToggle("1","0")
 relay = buttonToggle("a","b")
 
+
+def getPost(app, name):
+    try:
+        user = request.form[name]
+        return True
+    except:
+        return False
+
+
+
+
+
+
+
+
 app = Flask(__name__)
+
+@app.route("/changeRGB")
+def rgbChange():
+	red = request.args.get("red")
+	green = request.args.get("green")
+	blue = request.args.get("blue")
+
+	return 'bruh'
 
 @app.route("/temperature", methods = ["POST","GET"])
 def temperature():
@@ -99,16 +122,19 @@ def commands():
 @app.route("/",methods = ["POST","GET"])
 def home():
 
-	if request.method == "POST":
-		user = request.form["led-button"]
+    if request.method == "POST":
+        getPost(app, "led-button")
+        if (getPost(app, "led-button")):
+            app.logger.info("bruhLEDChungus")
+            led.toggleState()
+        elif (getPost(app, "sendRGB")):
+            app.logger.info("rgbChungus")
+        elif (getPost(app, "waterSend")):
+            app.logger.info("waterChungus")
 
-		if user == "ledToggle":
-			led.toggleState()
-		elif user == "waterToggle":
-			relay.toggleState()
 
-# old-interface.html
-		return render_template("old-interface.html")
+    # relay.toggleState()
+		return render_template("interface.html")
 	else:
-		return render_template("old-interface.html")
+		return render_template("interface.html")
 app.run(host='0.0.0.0', port= 8090,debug=True)
