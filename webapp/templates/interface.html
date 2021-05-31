@@ -177,12 +177,42 @@
 				var manual = localStorage.getItem("manual");
 				if (manual !== null) $('#textbox-manual').val("manual");
 			}
+		</script>
 
-			function waterButton() {
-				if (document.getElementById('automatic').checked) {
-					document.getElementById()
+		<script type="text/javascript">
+		
+			var auto = document.getElementById("automatic");
+			var autoTextbox = document.getElementById("autoWaterHumidityDrop");
+			var manualTextbox = document.getElementById("manualWaterTime");
+
+			window.onload = function() {
+				if (auto.checked == true) {
+					autoTextbox.disabled = false;
+					manualTextbox.disabled = true;
 				}
-			}	
+				else {
+					autoTextbox.disabled = true;
+					manualTextbox.disabled = false;
+				}
+			}
+
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var radioButtons = document.getElementsByName("wateroption");
+				var val = localStorage.getItem('wateroption');
+
+				for (var i = 0; i < radioButtons.length; i++) {
+					if (radioButtons[i].value == val) {
+						radioButtons[i].checked = true;
+					}
+				}
+				$('input[name="wateroption"]').on('change', function() {
+					localStorage.setItem('wateroption', $(this).val());
+				
+				});
+			});
 		</script>
 
 		<div class="data">
