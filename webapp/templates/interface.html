@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +14,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="../static/js/script.js"> </script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
 </head>
-<script>
+
+<script type="text/javascript"> // Read sensor data  
 	window.onload = function() {
 		readSensor("temperature");
 			readSensor("humidity");
@@ -42,26 +43,6 @@
 	}
 </script>
 
-<script type="text/javascript">
-
-function postRGBValues() {
-	var redSlider = document.getElementById("red").value;
-	var greenSlider = document.getElementById("green").value;
-	var blueSlider = document.getElementById("blue").value;
-
-	console.log(redSlider);
-	console.log(greenSlider);
-	console.log(blueSlider);
-}
-
-</script>
-
-
-
-
-
-
-
 <body>
 	<div class="logo-home">
 		<a href="interface.html">
@@ -72,54 +53,52 @@ function postRGBValues() {
 	<div class="led">
 		<div class="led-power">
 			<p id="led-header">LED</p>
-
-			<!-- LED Power Button -->
 			<form action="#" method="POST">
 				<button id="led-power-button" type="image" name="led-button" value="ledToggle" alt="LED Power"> 
 					<img id="led-power" src="../static/images/power.png" alt="">
 				</button>
 			</form>
-			<!-- LED Power Button -->
-
 		</div>
 		<div id="colour-box"></div>
 		<div class="change-colour">
-			<button id="change-colour-button" onclick="moveWaterDataDiv()">Change Colour</button>
+			<button id="change-colour-button" onclick="moveWaterDataDiv();">Change Colour</button>
 		</div>
+
 		<div id="colour-changer"class="colour-changer">
 			<form id="rgbForm" action="#" method="POST">
 				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255">
 				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255">
 				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" >
 				<br>
-
-
-
-
-
-
-				<input type="submit" value="Submit" name="sendRGB" onclick="postRGBValues();">
+				<input id="rgbSubmit" type="submit" name="sendRGB">
 			</form>
 		</div>
 	</div>
 
-	<!-- <script type="text/javascript">
-		var redSlider = document.getElementById("redLedValue").value;
-		var greenSlider = document.getElementById("greenLedValue").value;
-		var blueSlider = document.getElementById("blueLedValue").value;
+	<script type="text/javascript"> // RGB value form updater 
+		var redSlider = document.getElementById("red");
+		var greenSlider = document.getElementById("green");
+		var blueSlider = document.getElementById("blue");
+		var redValue = redSlider.value;
+		var greenValue = greenSlider.value;
+		var blueValue = blueSlider.value;
 
-		redSlider.onmouseup = function() {
-			document.getElementById("rgbForm").submit();
+		var input = document.querySelectorAll("input");
+			for(var i = 0; i < input.length; i++){
+			input[i].addEventListener("input", function() {
+				redSlider.oninput = function() {
+					redValue = this.value;
+				}
+				greenSlider.oninput = function() {
+					greenValue = this.value;
+				}
+				blueSlider.oninput = function() {
+					blueValue = this.value;
+				}
+				document.getElementById("rgbSubmit").value = redValue + "," + greenValue + "," + blueValue;
+			});
 		}
-		greenSlider.onmouseup = function() {
-			document.getElementById("rgbForm").submit();
-		}
-		blueSlider.onmouseup = function() {
-			document.getElementById("rgbForm").submit();
-		}
-	</script> -->
-
-
+	</script>
 
 	<script type="text/javascript"> // RGB slider display 
 		var input = document.querySelectorAll("input");
@@ -137,10 +116,12 @@ function postRGBValues() {
 	<br><br><br><br>
 
 	<div id="waterDataDiv">
+		
 		<div class="water">
 			<div class="water-text">
 				<p id="water-text">Watering</p>
 			</div>
+
 			<div class="water-form">
 				<form action="#" method="POST">
 					<div class="water-buttons">
@@ -168,7 +149,7 @@ function postRGBValues() {
 			</div>
 		</div>
 
-		<script>	// radio button disable
+		<script> // radio button disable
 			function disableManual() {
 				document.getElementById("manualWaterTime").disabled = true;
 				document.getElementById("autoWaterHumidityDrop").disabled = false;
@@ -218,10 +199,10 @@ function postRGBValues() {
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 	<script type="text/javascript"> // RGB Slider disappear  on "Change Colour" button click
-
 		const rgbSlider = document.getElementById("colour-changer");
 		const button = document.getElementById("change-colour-button");
 		const waterDataDiv = document.getElementById('waterDataDiv');
