@@ -64,10 +64,10 @@
 		</div>
 		<div id="colour-box"></div>
 		<div class="change-colour">
-			<button id="change-colour-button">Change Colour</button>
+			<button id="change-colour-button" onclick="moveWaterDataDiv()">Change Colour</button>
 		</div>
 		<div id="colour-changer"class="colour-changer">
-			<form action="#" methods="POST">
+			<form action="#" method="POST">
 				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255" id="redLedValue">
 				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255" id="greenLedValue">
 				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" id="blueLedValue">
@@ -76,37 +76,6 @@
 			</form>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-
-		const rgbSlider = document.getElementById("colour-changer");
-		const button = document.getElementById("change-colour-button");
-		button.onclick = function() {
-				if (rgbSlider.style.display !== "none") {
-					rgbSlider.style.display = "none";
-				}
-			else {
-				rgbSlider.style.display = "block";
-			}
-		};
-	</script>
-
-	<script type="text/javascript">
-	
-		const waterDataDiv = document.getElementById("waterDataDiv");
-		const rgbSlider = document.getElementById("colour-changer");
-
-		var currentDivPosition = parseInt(waterDataDiv.style.top);
-		var move = 100;
-
-		if (rgbSlider.style.display == "none") {
-			currentDivPosition = currentDivPosition + move+"px";
-		}
-		else {
-			currentDivPosition = currentDivPosition - move+"px";
-		}
-	
-	</script>
 
 	<script type="text/javascript">
 		var redSlider = document.getElementById("redLedValue").value;
@@ -124,10 +93,10 @@
 		}
 	</script>
 
-	<script type="text/javascript">
+	<script type="text/javascript"> // RGB slider display 
 		var input = document.querySelectorAll("input");
 			for(var i = 0; i < input.length; i++){
-			input[i].addEventListener("input", function(){
+			input[i].addEventListener("input", function() {
 				var red = document.getElementById("red").value,
 					green = document.getElementById("green").value,
 					blue = document.getElementById("blue").value;
@@ -171,7 +140,7 @@
 			</div>
 		</div>
 
-		<script>
+		<script>	// radio button disable
 			function disableManual() {
 				document.getElementById("manualWaterTime").disabled = true;
 				document.getElementById("autoWaterHumidityDrop").disabled = false;
@@ -183,24 +152,23 @@
 				document.getElementById("manualWaterTime").disabled = false;
 			}
 
-		window.onbeforeunload = function() {
-			localStorage.setItem("auto", $('#textbox-auto').val());
-			localStorage.setItem("manual", $('#textbox-manual').val());
-		}
-
-		window.onload = function() {
-			var auto = localStorage.getItem("auto");
-			if (auto !== null) $('#textbox-auto').val("auto");
-			var manual = localStorage.getItem("manual");
-			if (manual !== null) $('#textbox-manual').val("manual");
-		}
-
-		function waterButton() {
-			if (document.getElementById('automatic').checked) {
-				document.getElementById()
+			window.onbeforeunload = function() {
+				localStorage.setItem("auto", $('#textbox-auto').val());
+				localStorage.setItem("manual", $('#textbox-manual').val());
 			}
-		}
-			
+
+			window.onload = function() {
+				var auto = localStorage.getItem("auto");
+				if (auto !== null) $('#textbox-auto').val("auto");
+				var manual = localStorage.getItem("manual");
+				if (manual !== null) $('#textbox-manual').val("manual");
+			}
+
+			function waterButton() {
+				if (document.getElementById('automatic').checked) {
+					document.getElementById()
+				}
+			}	
 		</script>
 
 		<div class="data">
@@ -223,5 +191,25 @@
 			</div>
 		</div>
 	</div>
+
+	<script type="text/javascript"> // RGB Slider disappear  on "Change Colour" button click
+
+		const rgbSlider = document.getElementById("colour-changer");
+		const button = document.getElementById("change-colour-button");
+		const waterDataDiv = document.getElementById('waterDataDiv');
+		var moveAmount = -5;
+
+		button.onclick = function() {
+			if (rgbSlider.style.display !== "block") {
+				rgbSlider.style.display = "block";
+				waterDataDiv.style.margin = "0";
+			}
+			else {
+				rgbSlider.style.display = "none";
+				waterDataDiv.style.margin = "-90px";
+			}
+		};
+	</script>
+
 </body>
 </html>
