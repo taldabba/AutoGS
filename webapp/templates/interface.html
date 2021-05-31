@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>AutoGS</title>
-	<!-- <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"> --> <!-- for flask server css linking-->
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
 	<link rel="stylesheet" href="../static/css/style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Exo&display=swap" rel="stylesheet">
@@ -15,6 +15,33 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 </head>
+<script>
+	window.onload = function() {
+		readSensor("temperature");
+			readSensor("humidity");
+			readSensor("soilmoisture");
+			setInterval(loadSensors, 2.5 * 1000);
+		}
+			
+	function loadSensors() {
+		console.log("test");
+		readSensor("temperature");
+		readSensor("humidity");
+		readSensor("soilmoisture");
+	}
+
+	function readSensor(sensor) {	
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			    document.getElementById(sensor).innerHTML =  this.responseText;
+			}
+		};
+		xhttp.open("GET", sensor, true);
+		xhttp.send();
+	}
+</script>
+
 <body>
 	<div class="logo-home">
 		<a href="interface.html">
@@ -25,19 +52,25 @@
 	<div class="led">
 		<div class="led-power">
 			<p id="led-header">LED</p>
-			<form action="#" method="POST">
-				<input id="led-power" type="image" name="submit_led" value="ledToggle" alt="LED Power" src="../static/images/power.png">
+
+			<!-- LED Power Button -->
+			<form action="#" method="post">
+				<button id="led-power-button" type="image" name="led-button" value="ledToggle" alt="LED Power"> 
+					<img id="led-power" src="../static/images/power.png" alt="">
+				</button>
 			</form>
+			<!-- LED Power Button -->
+
 		</div>
 		<div id="colour-box"></div>
 		<div class="change-colour">
-			<p>Change Colour</p>
+			<button id="change-colour-button" onclick="moveWaterDataDiv()">Change Colour</button>
 		</div>
-		<div class="colour-changer">
-			<form action="#" methods="POST">
-				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="115" id="redLedValue">
-				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="10" id="greenLedValue">
-				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="162" id="blueLedValue">
+		<div id="colour-changer"class="colour-changer">
+			<form action="#" method="POST">
+				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255" id="redLedValue">
+				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255" id="greenLedValue">
+				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" id="blueLedValue">
 				<br>
 				<input type="submit" value="Submit" name="Send">
 			</form>
@@ -60,10 +93,10 @@
 		}
 	</script>
 
-	<script type="text/javascript">
+	<script type="text/javascript"> // RGB slider display 
 		var input = document.querySelectorAll("input");
 			for(var i = 0; i < input.length; i++){
-			input[i].addEventListener("input", function(){
+			input[i].addEventListener("input", function() {
 				var red = document.getElementById("red").value,
 					green = document.getElementById("green").value,
 					blue = document.getElementById("blue").value;
@@ -75,66 +108,108 @@
 
 	<br><br><br><br>
 
-	<div class="water">
-		<div class="water-text">
-			<p id="water-text">Watering</p>
-		</div>
-		<div class="water-form">
-			<form action="">
-				<div class="water-buttons">
-					<input onclick="disableManual();" name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
-					<label for="automatic">Automatic</label>			
+	<div id="waterDataDiv">
+		<div class="water">
+			<div class="water-text">
+				<p id="water-text">Watering</p>
+			</div>
+			<div class="water-form">
+				<form action="">
+					<div class="water-buttons">
+						<input onclick="disableManual();" name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
+						<label for="automatic">Automatic</label>			
 
-					<label id="textbox-auto" for="autoWaterHumidityDrop" class="textbox">Water if humidity drops below: </label>
-					<input class="water-textbox" type="text" id="autoWaterHumidityDrop">
+						<label id="textbox-auto" for="autoWaterHumidityDrop" class="textbox">Water if humidity drops below: </label>
+						<input class="water-textbox" type="text" id="autoWaterHumidityDrop">
 
-					<br>
+						<br>
 
-					<input onclick="disableAutomatic();" name="wateroption" type="radio" id="manual" value="MANUAL">
-					<label for="manual">Manual</label>
+						<input onclick="disableAutomatic();" name="wateroption" type="radio" id="manual" value="MANUAL">
+						<label for="manual">Manual</label>
 
-					<label for="manualWaterTime" id="textbox-manual" class="textbox">Water for how many seconds:</label>
-					<input class="water-textbox" type="text" id="manualWaterTime">
+						<label for="manualWaterTime" id="textbox-manual" class="textbox">Water for how many seconds:</label>
+						<input class="water-textbox" type="text" id="manualWaterTime">
 
-					<br>
+						<br>
 
-					<div class="water-submit">
-						<input id="water-submit" type="submit">
+						<div class="water-submit">
+							<input id="water-submit" type="submit">
+						</div>
 					</div>
+				</form>
+			</div>
+		</div>
+
+		<script>	// radio button disable
+			function disableManual() {
+				document.getElementById("manualWaterTime").disabled = true;
+				document.getElementById("autoWaterHumidityDrop").disabled = false;
+				$('#'+localStorage.selected).trigger('click');
+			}
+			function disableAutomatic() {
+				$('#'+localStorage.selected).trigger('click');
+				document.getElementById("autoWaterHumidityDrop").disabled = true;
+				document.getElementById("manualWaterTime").disabled = false;
+			}
+
+			window.onbeforeunload = function() {
+				localStorage.setItem("auto", $('#textbox-auto').val());
+				localStorage.setItem("manual", $('#textbox-manual').val());
+			}
+
+			window.onload = function() {
+				var auto = localStorage.getItem("auto");
+				if (auto !== null) $('#textbox-auto').val("auto");
+				var manual = localStorage.getItem("manual");
+				if (manual !== null) $('#textbox-manual').val("manual");
+			}
+
+			function waterButton() {
+				if (document.getElementById('automatic').checked) {
+					document.getElementById()
+				}
+			}	
+		</script>
+
+		<div class="data">
+			<div class="data-text">
+				<p id="water-text">Data</p>
+			</div>
+			<div class="datalist">
+				<div class="datalist-text">
+					<span>Temperature =</span>
+					<span id="temperature"></span>
+				</div>		
+				<div class="datalist-text">
+					<span>Humidity =</span>
+					<span id="humidity"></span>
+				</div>			
+				<div class="datalist-text">
+					<span>Soil Moisture =</span>
+					<span id="soilmoisture"></span>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 
-	<script>
-		function disableManual() {
-			document.getElementById("manualWaterTime").disabled = true;
-			document.getElementById("autoWaterHumidityDrop").disabled = false;
-			$('#'+localStorage.selected).trigger('click');
-		}
-		function disableAutomatic() {
-			$('#'+localStorage.selected).trigger('click');
-			document.getElementById("autoWaterHumidityDrop").disabled = true;
-			document.getElementById("manualWaterTime").disabled = false;
-		}
-		
+	<script type="text/javascript"> // RGB Slider disappear  on "Change Colour" button click
 
-  	
+		const rgbSlider = document.getElementById("colour-changer");
+		const button = document.getElementById("change-colour-button");
+		const waterDataDiv = document.getElementById('waterDataDiv');
+		var moveAmount = -5;
+
+		button.onclick = function() {
+			if (rgbSlider.style.display !== "block") {
+				rgbSlider.style.display = "block";
+				waterDataDiv.style.margin = "0";
+			}
+			else {
+				rgbSlider.style.display = "none";
+				waterDataDiv.style.margin = "-90px";
+			}
+		};
 	</script>
 
-	<div class="data">
-		<div class="data-text">
-			<p id="water-text">Data</p>
-		</div>
-		<div class="datalist">
-			<p>
-				Temperature:
-				<br>
-				Humidity:
-				<br>
-				Soil Moisture:
-			</p>
-		</div>
-	</div>
 </body>
 </html>
