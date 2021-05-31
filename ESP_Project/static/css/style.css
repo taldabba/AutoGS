@@ -36,10 +36,18 @@ p {
 
 .change-colour {
 	background-color: limegreen;
-	font-weight: 400;
-	font-size: 20px;
+}
+#change-colour-button {
+	background: transparent;
+	border: none !important;
+	font-family: 'Exo', sans-serif;
 	font-style: italic;
+	font-size: 20px;
+	font-weight: 400;
 	text-align: center;
+}
+#change-colour-button:hover {
+	cursor: pointer;
 }
 .led .change-colour {
 	height: fit-content;
@@ -47,7 +55,7 @@ p {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	right: 35px;
+	right: 28px;
 	margin: auto;
 }
 
@@ -68,6 +76,14 @@ p {
 	width: 70px;
 	display: block;
 	margin: -60px 20px;
+}
+#led-power-button {
+	background: transparent;
+	border: none !important;
+	font-size: 0;
+}
+#led-power-button:hover {
+	cursor: pointer;
 }
 .led .led-power {
 	position: relative;
@@ -224,4 +240,8 @@ input[type=radio] {
 	text-align: center;
 	font-size: 18px;
 	font-weight: 600;
+}
+
+.datalist-text {
+	font-family: 'Exo', sans-serif;
 }
