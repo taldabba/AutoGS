@@ -54,7 +54,7 @@
 			<p id="led-header">LED</p>
 
 			<!-- LED Power Button -->
-			<form action="#" method="post">
+			<form action="#" method="POST">
 				<button id="led-power-button" type="image" name="led-button" value="ledToggle" alt="LED Power"> 
 					<img id="led-power" src="../static/images/power.png" alt="">
 				</button>
@@ -67,30 +67,40 @@
 			<button id="change-colour-button" onclick="moveWaterDataDiv()">Change Colour</button>
 		</div>
 		<div id="colour-changer"class="colour-changer">
-			<form action="#" method="POST">
+			<form id="rgbForm" action="#" method="POST">
 				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255" id="redLedValue">
 				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255" id="greenLedValue">
 				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" id="blueLedValue">
 				<br>
-				<input type="submit" value="Submit" name="Send">
+				<input type="submit" value="Submit" name="sendRGB">
 			</form>
 		</div>
 	</div>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		var redSlider = document.getElementById("redLedValue").value;
 		var greenSlider = document.getElementById("greenLedValue").value;
 		var blueSlider = document.getElementById("blueLedValue").value;
 
 		redSlider.onmouseup = function() {
-			document.getElementById("form").submit();
+			document.getElementById("rgbForm").submit();
 		}
 		greenSlider.onmouseup = function() {
-			document.getElementById("form").submit();
+			document.getElementById("rgbForm").submit();
 		}
 		blueSlider.onmouseup = function() {
-			document.getElementById("form").submit();
+			document.getElementById("rgbForm").submit();
 		}
+	</script> -->
+
+	<script type="text/javascript">
+	
+	function postRGBValues() {
+		var redSlider = document.getElementById("redLedValue").value;
+		var greenSlider = document.getElementById("greenLedValue").value;
+		var blueSlider = document.getElementById("blueLedValue").value;
+	}
+
 	</script>
 
 	<script type="text/javascript"> // RGB slider display 
@@ -114,7 +124,7 @@
 				<p id="water-text">Watering</p>
 			</div>
 			<div class="water-form">
-				<form action="">
+				<form action="#" method="POST">
 					<div class="water-buttons">
 						<input onclick="disableManual();" name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
 						<label for="automatic">Automatic</label>			
@@ -133,7 +143,7 @@
 						<br>
 
 						<div class="water-submit">
-							<input id="water-submit" type="submit">
+							<input id="water-submit" type="submit" name="waterSend">
 						</div>
 					</div>
 				</form>
