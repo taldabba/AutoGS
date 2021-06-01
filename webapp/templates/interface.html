@@ -50,6 +50,8 @@
 		var greenSlider = document.getElementById("green").value;
 		var blueSlider = document.getElementById("blue").value;
 
+
+
 		console.log(redSlider);
 		console.log(greenSlider);
 		console.log(blueSlider);
@@ -96,24 +98,26 @@
 			<form id="rgbForm" action="#" method="POST">
 				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255">
 				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255">
-				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" >
+				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255">
 				<br>
-				<input type="submit"name="sendRGB">
+				<input type="submit"name="sendRGB" onclick="postRGBValues();">
 			</form>
 		</div>
 	</div>
 
 	<script type="text/javascript"> // RGB slider display 
+		var bgColour;
 		var input = document.querySelectorAll("input");
-			for(var i = 0; i < input.length; i++){
+			for(var i = 0; i < input.length; i++) {
 			input[i].addEventListener("input", function() {
 				var red = document.getElementById("red").value,
 					green = document.getElementById("green").value,
 					blue = document.getElementById("blue").value;
-					var display = document.getElementById("colour-box");
+				var display = document.getElementById("colour-box");
 				display.style.background = "rgb(" + red + ", " + green + ", " + blue + ")";
 			});
 		}
+
 	</script>
 
 	<br><br><br><br>
@@ -179,8 +183,7 @@
 			}
 		</script>
 
-		<script type="text/javascript">
-		
+		<script type="text/javascript">	// disable textboxes onload
 			var auto = document.getElementById("automatic");
 			var autoTextbox = document.getElementById("autoWaterHumidityDrop");
 			var manualTextbox = document.getElementById("manualWaterTime");
@@ -195,10 +198,9 @@
 					manualTextbox.disabled = false;
 				}
 			}
-
 		</script>
 
-		<script type="text/javascript">
+		<script type="text/javascript"> // disable radio buttons onload
 			$(document).ready(function() {
 				var radioButtons = document.getElementsByName("wateroption");
 				var val = localStorage.getItem('wateroption');
