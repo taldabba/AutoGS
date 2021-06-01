@@ -79,7 +79,7 @@ function postRGBValues() {
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "http://10.0.0.246:5000//changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
+  xhttp.open("GET", "http://10.0.0.246:8090//changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
   xhttp.send();
 
 
@@ -119,7 +119,7 @@ function postRGBValues() {
 			<button id="change-colour-button" onclick="moveWaterDataDiv()">Change Colour</button>
 		</div>
 		<div id="colour-changer"class="colour-changer">
-			<form id="rgbForm" action="#" method="POST">
+			<form id="rgbForm">
 				Red <input name="led-slider" type="range" min="0" max="255" step="1" id="red" value="255">
 				Green <input name="led-slider" type="range" min="0" max="255" step="1" id="green" value="255">
 				Blue <input name="led-slider" type="range" min="0" max="255" step="1" id="blue" value="255" >
