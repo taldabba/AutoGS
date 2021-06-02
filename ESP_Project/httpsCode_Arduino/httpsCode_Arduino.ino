@@ -27,7 +27,7 @@ void setup () {
   pinMode(BUILTIN_LED, OUTPUT);//led setup
   pinMode(relayPin,OUTPUT);
   //wifi setup
-  WiFi.begin("BELL043", "4DCC2A9CAC27"); 
+  WiFi.begin("NETGEAR42", "bluesky812"); 
   while (WiFi.status() != WL_CONNECTED) { 
     delay(1000);
     Serial.println("Connecting.."); 
@@ -51,7 +51,7 @@ void sendToWebserver(int temperature, int humidity, int soilMoisturePercent) {
  
     HTTPClient http;  //Declare an object of class HTTPClient
     WiFiClient wifi;
-    http.begin(wifi,"http://192.168.2.79:8090//helloesp?temperature=" + String(temperature) + "&humidity=" + String(humidity) + "&soilMoisturePercent=" + String(soilMoisturePercent)); //Specify request destination
+    http.begin(wifi,"http://10.0.0.246:8090//helloesp?temperature=" + String(temperature) + "&humidity=" + String(humidity) + "&soilMoisturePercent=" + String(soilMoisturePercent)); //Specify request destination
 
     int httpCode = http.GET(); //Send the request
  
@@ -73,7 +73,7 @@ String getFlaskCommands(){
  
     HTTPClient http;  //Declare an object of class HTTPClient
     WiFiClient wifi;
-    http.begin(wifi,"http://192.168.2.79:8090//espcommands"); //Specify request destination
+    http.begin(wifi,"http://10.0.0.246:8090//espcommands"); //Specify request destination
 
     int httpCode = http.GET(); //Send the request
  
