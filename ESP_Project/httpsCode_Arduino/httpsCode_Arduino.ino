@@ -51,7 +51,7 @@ void sendToWebserver(int temperature, int humidity, int soilMoisturePercent) {
  
     HTTPClient http;  //Declare an object of class HTTPClient
     WiFiClient wifi;
-    http.begin(wifi,"http://10.0.0.246:8090//helloesp?temperature=" + String(temperature) + "&humidity=" + String(humidity) + "&soilMoisturePercent=" + String(soilMoisturePercent)); //Specify request destination
+    http.begin(wifi,"http://192.168.2.51:8090//helloesp?temperature=" + String(temperature) + "&humidity=" + String(humidity) + "&soilMoisturePercent=" + String(soilMoisturePercent)); //Specify request destination
 
     int httpCode = http.GET(); //Send the request
  
@@ -73,7 +73,7 @@ String getFlaskCommands(){
  
     HTTPClient http;  //Declare an object of class HTTPClient
     WiFiClient wifi;
-    http.begin(wifi,"http://10.0.0.246:8090//espcommands"); //Specify request destination
+    http.begin(wifi,"http://192.168.2.51:8090//espcommands"); //Specify request destination
 
     int httpCode = http.GET(); //Send the request
  
@@ -91,24 +91,24 @@ String getFlaskCommands(){
 }
 
 void parsePayload(String payload){
-  Serial.println(payload.substring(1,2));
+  Serial.println(payload);
   if (payload.substring(0,1) == "1"){
     
     digitalWrite(BUILTIN_LED,HIGH);    
   }
-  else if (payload.substring(0,1) == "0")  {
+  else{
     digitalWrite(BUILTIN_LED,LOW);
   }
   
   if (payload.substring(1,2) == "a"){
-    Serial.println("relay on");
+//    Serial.println("relay on");
     digitalWrite(relayPin,LOW);
   }
     
   
   else{
     digitalWrite(relayPin,HIGH);
-    Serial.println("relay off");
+//    Serial.println("relay off");
   }
 
 }
