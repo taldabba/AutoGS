@@ -1,4 +1,4 @@
-#include <ESP8266WiFi.h>
+ #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
 #include <LiquidCrystal_I2C.h>
@@ -27,7 +27,7 @@ void setup () {
   pinMode(BUILTIN_LED, OUTPUT);//led setup
   pinMode(relayPin,OUTPUT);
   //wifi setup
-  WiFi.begin("NETGEAR42", "bluesky812"); 
+  WiFi.begin("BELL043", "4DCC2A9CAC27"); 
   while (WiFi.status() != WL_CONNECTED) { 
     delay(1000);
     Serial.println("Connecting.."); 
