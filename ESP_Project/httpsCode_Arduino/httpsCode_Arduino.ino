@@ -5,12 +5,20 @@
 #include <Wire.h>
 #include <SPI.h>
 #include <string.h>
+#include <Adafruit_NeoPixel.h>
 
 #include "DHTesp.h"
-#ifdef ESP32
+#ifdef ESP32l,.
 #pragma message(THIS EXAMPLE IS FOR ESP8266 ONLY!)
 #error Select ESP8266 board.
 #endif
+#define numberOfLED 60
+#define ledPin 4
+
+//int numberOfLED = 60;
+//int ledPin = 6;
+
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(numberOfLED, ledPin, NEO_GRB + NEO_KHZ800);
 
 int relayPin = 5;
 DHTesp dht;
@@ -21,7 +29,10 @@ void setup () {
 
  
   Serial.begin(115200);
-   
+  pixels.begin(); 
+  pixels.show();
+  delay(50);
+  
   dht.setup(16, DHTesp::DHT22); //dht setup
 //  lcd.begin(16,2);//lcd setup
   pinMode(BUILTIN_LED, OUTPUT);//led setup
@@ -33,7 +44,8 @@ void setup () {
     Serial.println("Connecting.."); 
   }
 
-  Serial.println("Connected to WiFi Network"); 
+  Serial.println("Connected to WiFi Network");
+  
 }
 
 //void displayLCD(int temperature, int humidity, int soilMoisturePercent) {
@@ -92,6 +104,24 @@ String getFlaskCommands(){
 
 void parsePayload(String payload){
   Serial.println(payload);
+//  Serial.println("Red = " + payload.substring(2,5));
+//  Serial.println("Blue = " + payload.substring(5,8));
+//  Serial.println("Green = " + payload.substring(8,11));
+
+  String redValueStr = payload.substring(2,5);
+  String greenValueStr = payload.substring(5,8);
+  String blueValueStr = payload.substring(8,11);
+  
+  int redValue = redValueStr.toInt();
+  int greenValue = greenValueStr.toInt();
+  int blueValue = blueValueStr.toInt();
+
+  
+  for (int i = 0; i < numberOfLED; i++) {
+      pixels.setPixelColor(i, pixels.Color(redValue,greenValue,blueValue));
+      pixels.show();}
+
+  
   if (payload.substring(0,1) == "1"){
     
     digitalWrite(BUILTIN_LED,HIGH);    
@@ -112,6 +142,7 @@ void parsePayload(String payload){
   }
 
 }
+
 
 
 

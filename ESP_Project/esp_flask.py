@@ -23,6 +23,28 @@ temperatureQue = sensorQueue()
 humidityQue = sensorQueue()
 soilMoistureQue = sensorQueue()
 
+redQue = sensorQueue()
+blueQue = sensorQueue()
+greenQue = sensorQueue()
+
+
+# class threadTimer:
+# 	def __init__(self):
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class buttonToggle:
 	def __init__(ledColour,onMsg,offMsg):
@@ -66,6 +88,15 @@ def rgbChange():
 	green = request.args.get("green")
 	blue = request.args.get("blue")
 
+	app.logger.info(red)
+	app.logger.info(green)
+	app.logger.info(blue)
+
+
+	redQue.add(red)
+	greenQue.add(green)
+	blueQue.add(blue)
+
 	return ''
 
 @app.route("/temperature", methods = ["POST","GET"])
@@ -106,11 +137,26 @@ def helloHandler():
 
 @app.route('/espcommands')
 def commands():
-	commandString = ''
 	
+
+
+	r = int(redQue.get())
+	g = int(greenQue.get())
+	b = int(blueQue.get())
+
+	r = f'{r:03}'
+	g = f'{g:03}'
+	b = f'{b:03}'
+
+
+
+	commandString = ''	
 	commandString+= led.curMessage()
 	commandString+= relay.curMessage()
 
+	commandString+= str(r)
+	commandString+= str(g)
+	commandString+= str(b)
 
 	# if led.tate:
 	# 	commandString += led.onMsg
