@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Exo&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Exo:ital@0;1&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-	<script type="text/javascript" src="../static/js/script.js"> </script>
+	<!-- <script type="text/javascript" src="../static/js/script.js"> </script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 
@@ -79,7 +79,7 @@ function postRGBValues() {
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "http://192.168.2.51:8090//changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
+  xhttp.open("GET", "http://10.0.0.246:8090//changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
   xhttp.send();
 
 
