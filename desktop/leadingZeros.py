@@ -24,17 +24,38 @@ class timerThread:
         t= self.t
         t.start()
 
-myT = timerThread(0,False)
+# myT = timerThread(0,False)
 
-while True:
+# while True:
 
-    if not myT.checkIfAlive():    
-        x = int(input("how long timer?: "))
-        myT = timerThread(x,False)
-        myT.startThread()
+#     if not myT.checkIfAlive():    
+#         x = int(input("how long timer?: "))
+#         myT = timerThread(x,False)
+#         myT.startThread()
 ##    break
 ##def tTimer(seconds):
 ##    time.sleep(seconds)
 ####def checkThreadStatus(t)
 ##
 ##t= threading.Thread()
+
+
+class sensorQueue:
+    def __init__(self):
+        self.que = []
+        self.latestValue = 0
+    def add(self,newValue):
+        self.que.clear()
+        self.que.append(newValue)
+        self.latestValue = newValue
+    def get(self):
+        if not self.que:
+            return self.latestValue
+        value = self.que.pop()
+        return value
+
+
+bruh = sensorQueue()
+
+
+print(len(bruh.que))
