@@ -15,32 +15,27 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-<script>
+<script type="text/javascript">
 	window.onload = function() {
 		readSensor("temperature");
 			readSensor("humidity");
 			readSensor("soilmoisture");
 			setInterval(loadSensors, 2.5 * 1000);
+
+/*
+			var auto = localStorage.getItem("auto");
+			if (auto !== null) $('#textbox-auto').val("auto");
+			var manual = localStorage.getItem("manual");
+			if (manual !== null) $('#textbox-manual').val("manual");
+*/
+      var automaticCheckbox = document.getElementById("automatic");
+      automaticCheckbox.checked = true;
+			disableManual();
+
 		}
 			
 	function loadSensors() {
-		console.log("test");
+		console.log("loadSensors");
 		readSensor("temperature");
 		readSensor("humidity");
 		readSensor("soilmoisture");
@@ -56,40 +51,32 @@
 		xhttp.open("GET", sensor, true);
 		xhttp.send();
 	}
-</script>
 
-<script type="text/javascript">
+	function postRGBValues() {
 
-function postRGBValues() {
+		var redSlider = document.getElementById("red").value;
+		var greenSlider = document.getElementById("green").value;
+		var blueSlider = document.getElementById("blue").value;
 
+		console.log(redSlider);
+		console.log(greenSlider);
+		console.log(blueSlider);
 
-	var redSlider = document.getElementById("red").value;
-	var greenSlider = document.getElementById("green").value;
-	var blueSlider = document.getElementById("blue").value;
-
-	console.log(redSlider);
-	console.log(greenSlider);
-	console.log(blueSlider);
-
-
-	var xhttp = new XMLHttpRequest();
-  	xhttp.onreadystatechange = function() {
-    
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "http://10.0.0.246:8090//changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
-  xhttp.send();
-
-
-	document.getElementById("colour-changer").value = redSlider;
-}
+		var xhttp = new XMLHttpRequest();
+	  	xhttp.onreadystatechange = function() {
+	    
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById("demo").innerHTML = this.responseText;
+	    }
+	  };
+	  xhttp.open("GET", "http://10.0.0.246:8090//changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
+	  xhttp.send();
+		document.getElementById("colour-changer").value = redSlider;
+	}
 
 </script>
 
-
-
+</head>
 
 
 
@@ -153,7 +140,7 @@ function postRGBValues() {
 
 
 
-	<script type="text/javascript"> // RGB slider display 
+  <script type="text/javascript"> // RGB slider display 
 		var input = document.querySelectorAll("input");
 			for(var i = 0; i < input.length; i++){
 			input[i].addEventListener("input", function() {
@@ -174,13 +161,13 @@ function postRGBValues() {
 				<p id="water-text">Watering</p>
 			</div>
 			<div class="water-form">
-				<form action="#" method="POST">
+				<form action="#" method="POST" name="watering">
 					<div class="water-buttons">
 						<input onclick="disableManual();" name="wateroption" type="radio" id="automatic" value="AUTOMATIC">
 						<label for="automatic">Automatic</label>			
 
 						<label id="textbox-auto" for="autoWaterHumidityDrop" class="textbox">Water if humidity drops below: </label>
-						<input class="water-textbox" type="text" id="autoWaterHumidityDrop">
+						<input class="water-textbox" type="text" name="autoWaterHumidityDrop" id="autoWaterHumidityDrop">
 
 						<br>
 
@@ -188,7 +175,7 @@ function postRGBValues() {
 						<label for="manual">Manual</label>
 
 						<label for="manualWaterTime" id="textbox-manual" class="textbox">Water for how many seconds:</label>
-						<input class="water-textbox" type="text" id="manualWaterTime">
+						<input class="water-textbox" type="text" name="manualWaterTime" id="manualWaterTime">
 
 						<br>
 
@@ -217,12 +204,7 @@ function postRGBValues() {
 				localStorage.setItem("manual", $('#textbox-manual').val());
 			}
 
-			window.onload = function() {
-				var auto = localStorage.getItem("auto");
-				if (auto !== null) $('#textbox-auto').val("auto");
-				var manual = localStorage.getItem("manual");
-				if (manual !== null) $('#textbox-manual').val("manual");
-			}
+			
 
 			function waterButton() {
 				if (document.getElementById('automatic').checked) {

@@ -5,7 +5,7 @@
 		<title>
 			AutoGS
 		</title>
-		<link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+		<!-- <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"> -->
 		<script>
 			window.onload = function() {
 					readSensor("temperature");
@@ -60,11 +60,11 @@
 
 			<h2>Send to LCD</h2>
 			<form action="#" method="POST">
-<<<<<<< Updated upstream
+
 				<input name="lcd">
 
 				<input type="submit">
-=======
+
 				<button name="submit_led" value="ledToggle"><img id="led-power" alt="LED Power" src="../static/images/power.png"> </button>
 			</form>
 		</div>
@@ -143,16 +143,21 @@
 
 					<button class="water-submit" name="water-button" type="submit" value="waterToggle">Water</button>
 				</div>
->>>>>>> Stashed changes
 			</form>
-		</form>
-		<div><span>Temperature=</span><span id="temperature"></span></div>
+		</div>
+		<!-- </form> -->
+		
+		<div><span>Temperature Brush=</span><span id="temperature"></span></div>
 		<div><span>Humidity=</span><span id="humidity"></span></div>
 		<div><span>Soil Moisture=</span><span id="soilmoisture"></span></div>
 
 
 	</center>
 	
+		<div><span>Temperature=</span><span id="temperature"></span></div>
+		<div><span>Humidity=</span><span id="humidity"></span></div>
+		<div><span>Soil Moisture=</span><span id="soilmoisture"></span></div>
+
 	</body>
 
 </html>

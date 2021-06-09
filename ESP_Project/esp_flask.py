@@ -1,7 +1,7 @@
 from flask import Flask,render_template, request, redirect, url_for
 import logging
- 
-
+import threading
+import time
 
 ledState = False
 
@@ -27,16 +27,26 @@ redQue = sensorQueue()
 blueQue = sensorQueue()
 greenQue = sensorQueue()
 
+class timerThread:
+    def __init__(self,seconds,state):
+        self.threadState = state
+        self.seconds = seconds
+        self.t = threading.Thread(target = self.threadTimer,args=(self.seconds,))
 
-# class threadTimer:
-# 	def __init__(self):
-		
-
-
-
-
-
-
+    def checkIfAlive(self):
+        t = self.t
+        if t.is_alive():
+            return True
+        else:
+            return False
+        
+    def threadTimer(self,seconds):
+        
+        time.sleep(seconds)
+        app.logger.info("ABDO ABDO")
+    def startThread(self):
+        t= self.t
+        t.start()
 
 
 
@@ -137,7 +147,9 @@ def helloHandler():
 
 @app.route('/espcommands')
 def commands():
-	
+
+
+
 
 
 	r = int(redQue.get())
@@ -167,7 +179,7 @@ def commands():
 
 @app.route("/",methods = ["POST","GET"])
 def home():
-
+	manualThread = timerThread(0,False)
 	if request.method == "POST":
 		getPost(app, "led-button")
 		if (getPost(app, "led-button")):
@@ -175,11 +187,22 @@ def home():
 			led.toggleState()
 		elif (getPost(app, "sendRGB")):
 			app.logger.info("rgbChungus")
-		elif (getPost(app, "waterSend")):
-			app.logger.info("waterChungus")
+		# elif (getPost(app, "waterSend")):
+		# 	app.logger.info("waterChungus")
+		# 	relay.toggleState()
+		elif ("AUTOMATIC"==request.form["wateroption"]):
+			app.logger.info("auto "+ request.form["autoWaterHumidityDrop"])
+		elif ("MANUAL"==request.form["wateroption"]):
+			seconds = request.form["manualWaterTime"]
+			
 
-
-    # relay.toggleState()
+			if not manualThread.checkIfAlive():
+				threadOn = True
+				app.logger.info("water on" + seconds)
+				manualThread = timerThread(int(seconds),False)
+				manualThread.startThread()
+				# app.logger.info(manualThread.checkIfAlive() + "-----------------------")
+	# relay.toggleState()
 		return render_template("interface.html")
 	else:
 		return render_template("interface.html")

@@ -1,19 +1,40 @@
 import time
+import threading
 
-print("Start time")
 
-start_time = time.time()
-print(start_time)
-start_time = start_time + 60
-print(start_time)
-stopper = input("press enter to stop")
-end_time =time.time()
-print("you have finished")
-print(end_time)
-print("---------------")
-duration = int(end_time - start_time)
-print(duration)
-if duration > 5:
-    print("Bad Luck you were not fast enough")
-else:
-    print("well done you are very quick")
+class timerThread:
+    def __init__(self,seconds,state):
+        self.threadState = state
+        self.seconds = seconds
+        self.t = threading.Thread(target = self.threadTimer,args=(self.seconds,))
+
+    def checkIfAlive(self):
+        t = self.t
+        if t.is_alive():
+            return True
+        else:
+            return False
+        
+    def threadTimer(self,seconds):
+        
+        time.sleep(seconds)
+        print("Abdo Abdo")
+        
+    def startThread(self):
+        t= self.t
+        t.start()
+
+myT = timerThread(0,False)
+
+while True:
+
+    if not myT.checkIfAlive():    
+        x = int(input("how long timer?: "))
+        myT = timerThread(x,False)
+        myT.startThread()
+##    break
+##def tTimer(seconds):
+##    time.sleep(seconds)
+####def checkThreadStatus(t)
+##
+##t= threading.Thread()
