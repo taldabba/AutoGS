@@ -2,12 +2,26 @@ p {
 	font-family: 'Exo', sans-serif;
 }
 
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background: white;
+	background-size: 15%;
+	background-image: url(../images/geometric-background.png), linear-gradient(white 60%, rgba(78, 255, 78, 0.452));
+}
+
 /* ============================================== */
 /* LED Section */
 /* ============================================== */
 
 .logo-home {
-	background-color: lightgreen;
+	/* background-color: lightgreen; */
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -23,7 +37,7 @@ p {
 }
 
 .led {
-	background-color:blueviolet;
+	/* background-color:blueviolet; */
 	width: 600px;
 	height: 200px;
 	align-items: center;
@@ -35,7 +49,9 @@ p {
 }
 
 .change-colour {
-	background-color: limegreen;
+	/* background-color: limegreen; */
+	border: 2px solid black;
+	border-radius: 10px;
 }
 #change-colour-button {
 	background: transparent;
@@ -60,7 +76,7 @@ p {
 }
 
 .led-power {
-	background-color: lightpink;
+	/* background-color: lightpink; */
 	margin-left: 42.5px;
 	width: fit-content;
 	height: fit-content;
@@ -75,12 +91,14 @@ p {
 #led-power {
 	width: 70px;
 	display: block;
-	margin: -60px 20px;
+	margin: -75px 20px;
+	padding: 5px;
 }
 #led-power-button {
 	background: transparent;
 	border: none !important;
 	font-size: 0;
+	
 }
 #led-power-button:hover {
 	cursor: pointer;
@@ -107,7 +125,7 @@ p {
 }
 
 .colour-changer {
-	background-color: mediumvioletred;
+	/* background-color: mediumvioletred; */
 	height: fit-content;
 	font-family: 'Exo', sans-serif;
 	text-align: center;
@@ -127,7 +145,7 @@ p {
 /* ============================================== */
 
 .water {
-	background-color: olivedrab;
+	/* background-color: olivedrab; */
 	width: 600px;
 	height: 200px;
 	align-items: center;
@@ -148,7 +166,7 @@ p {
 }
 
 .water-form {
-	background-color: darkorchid;
+	/* background-color: darkorchid; */
 	height: fit-content;
 	width: 600px;
 }
@@ -190,7 +208,7 @@ p {
 .water-submit {
 	height: 40px;
 	width: fit-content;
-	background: springgreen;
+	/* background: springgreen; */
 }
 .water .water-submit {
 	position: relative;
@@ -213,7 +231,7 @@ input[type=radio] {
 /* ============================================== */
 
 .data {
-	background-color:turquoise;
+	/* background-color:turquoise; */
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
@@ -223,7 +241,7 @@ input[type=radio] {
 }
 
 .data-text {
-	background-color:thistle;
+	/* background-color:thistle; */
 	width: fit-content;
 	height: fit-content;
 	margin-left: auto;
@@ -232,7 +250,7 @@ input[type=radio] {
 }
 
 .datalist {
-	background-color:tomato;
+	/* background-color:tomato; */
 	width: fit-content;
 	height: fit-content;
 	margin-left: auto;
