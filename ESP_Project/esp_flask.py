@@ -29,7 +29,11 @@ redQue = sensorQueue()
 blueQue = sensorQueue()
 greenQue = sensorQueue()
 
+
 secondsQue = []
+automaticWateringQue = sensorQueue()
+automaticWateringQue.add(0)
+
 class timerThread:
     def __init__(self,seconds,state):
         self.threadState = state
@@ -150,8 +154,10 @@ def helloHandler():
 
 @app.route('/espcommands')
 def commands():
-
+	autoWater= True
+	humidityThreshold = automaticWateringQue.get()
 	if len(secondsQue) == 1:
+		autoWater = False
 		if timer.checkIfAlive():
 			app.logger.info("timer is On")
 			relay.state = True
@@ -160,6 +166,15 @@ def commands():
 	else:
 		app.logger.info("timer is Off")
 		relay.state = False
+		
+		if autoWater:
+			if int(soilMoistureQue.get()) <= int(humidityThreshold):
+				relay.state = True
+			else:
+				relay.state = False
+
+		# waterModeQue.append("1")
+
 
 	r = int(redQue.get())
 	g = int(greenQue.get())
@@ -179,11 +194,13 @@ def commands():
 	commandString+= str(g)
 	commandString+= str(b)
 
-	# if led.tate:
-	# 	commandString += led.onMsg
-	# else:
-	# 	commandString += led.offMsgs
-	# app.logger.info(commandString)
+	if autoWater:
+		commandString+= str("a")
+	else:
+		commandString+= str("b")
+
+	commandString+= str(humidityThreshold)
+
 	return commandString
 
 @app.route("/",methods = ["POST","GET"])
@@ -199,7 +216,12 @@ def home():
 		# 	app.logger.info("waterChungus")
 		# 	relay.toggleState()
 		elif ("AUTOMATIC"==request.form["wateroption"]):
-			app.logger.info("auto "+ request.form["autoWaterHumidityDrop"])
+			wateringThreshold = request.form["autoWaterHumidityDrop"]
+			app.logger.info("reset watering threshold to "+ wateringThreshold)
+
+			automaticWateringQue.add(wateringThreshold)
+
+
 		elif ("MANUAL"==request.form["wateroption"]):
 			seconds = request.form["manualWaterTime"]
 			
