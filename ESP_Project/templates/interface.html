@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>AutoGS</title>
+	<link rel="icon" href="../static/images/autogs-icon.png">
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
 	<link rel="stylesheet" href="../static/css/style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -78,67 +79,35 @@
 
 </head>
 
-
-
-
 <body>
 	<div class="logo-home">
-		<a href="interface.html">
 		<img class="logo" src="../static/images/autogs-logo.png" alt="AutoGS">
-		</a>
 	</div>
 
 	<div class="led">
 		<div class="led-power">
 			<p id="led-header">LED</p>
-
-			<!-- LED Power Button -->
 			<form action="#" method="POST">
 				<button id="led-power-button" type="image" name="led-button" value="ledToggle" alt="LED Power"> 
 					<img id="led-power" src="../static/images/power.png" alt="">
 				</button>
 			</form>
-			<!-- LED Power Button -->
-
 		</div>
 		<div id="colour-box"></div>
 		<div class="change-colour">
 			<button id="change-colour-button" onclick="moveWaterDataDiv()">Change Colour</button>
 		</div>
-		<div id="colour-changer"class="colour-changer">
+		<div id="colour-changer" class="colour-changer">
 			<form id="rgbForm">
 				Red <input name="red" type="range" min="0" max="255" step="1" id="red" value="255">
 				Green <input name="green" type="range" min="0" max="255" step="1" id="green" value="255">
 				Blue <input name="blue" type="range" min="0" max="255" step="1" id="blue" value="255" >
 				<br>
 				<p id="demo"></p>
-
-
-
-
-
 				<input type="submit"name="sendRGB" onclick="postRGBValues();">
 			</form>
 		</div>
 	</div>
-
-	<!-- <script type="text/javascript">
-		var redSlider = document.getElementById("redLedValue").value;
-		var greenSlider = document.getElementById("greenLedValue").value;
-		var blueSlider = document.getElementById("blueLedValue").value;
-
-		redSlider.onmouseup = function() {
-			document.getElementById("rgbForm").submit();
-		}
-		greenSlider.onmouseup = function() {
-			document.getElementById("rgbForm").submit();
-		}
-		blueSlider.onmouseup = function() {
-			document.getElementById("rgbForm").submit();
-		}
-	</script> -->
-
-
 
   <script type="text/javascript"> // RGB slider display 
 		var input = document.querySelectorAll("input");
