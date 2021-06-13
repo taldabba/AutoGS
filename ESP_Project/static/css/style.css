@@ -185,10 +185,10 @@ body {
 }
 
 #textbox-auto {
-	margin-left: 30px;
+	margin-left: 75px;
 }
 #textbox-manual {
-	margin-left: 75px;
+	margin-left: 122px;
 }
 
 .textbox {
@@ -217,6 +217,14 @@ input[type=radio] {
 	margin-top: auto;
 	margin-bottom: auto;
 	display: inline-block;
+}
+
+#autoWaterHumidityDrop {
+	width: 125px;
+}
+
+#manualWaterTime {
+	width: 125px;
 }
 
 /* ============================================== */
@@ -255,6 +263,15 @@ input[type=radio] {
 	font-family: 'Exo', sans-serif;
 }
 
+#automatic-data-text {
+	font-style: italic;
+	font-size: 16px;
+}
+
 #waterDataDiv {
 	margin: -90px;
+}
+
+.units {
+	margin-left: -4px;
 }

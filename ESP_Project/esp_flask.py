@@ -125,15 +125,19 @@ def temperature():
 @app.route("/humidity", methods = ["POST","GET"])
 def humidity():
 	data = humidityQue.get()
-	return str(data);
+	return str(data)
 
 
 @app.route("/soilmoisture", methods= ["POST","GET"])
 def soilmoisture():
 	data = soilMoistureQue.get()
 
-	return str(data) + '';
+	return str(data) + ''
 
+@app.route("/automaticwater", methods = ["POST", "GET"])
+def automaticwater():
+	data = automaticWateringQue.get()
+	return str(data)
 
 @app.route('/helloesp')
 def helloHandler():
@@ -238,4 +242,4 @@ def home():
 	else:
 		return render_template("interface.html")
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=80,debug=True)
+    app.run(host='0.0.0.0',port=5000,debug=True)
