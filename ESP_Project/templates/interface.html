@@ -70,7 +70,7 @@
 	      document.getElementById("demo").innerHTML = this.responseText;
 	    }
 	  };
-	  xhttp.open("GET", "http://10.0.0.246:8090//changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
+	  xhttp.open("GET", "/changeRGB?red=" + String(redSlider) + "&green=" +String(greenSlider) + "&blue="+String(blueSlider), true);
 	  xhttp.send();
 		document.getElementById("colour-changer").value = redSlider;
 	}
