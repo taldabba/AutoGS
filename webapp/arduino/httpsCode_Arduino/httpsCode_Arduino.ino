@@ -31,7 +31,7 @@ void setup () {
   Serial.begin(115200);
   pixels.begin(); 
   pixels.show();
-  delay(50);
+  pixels.setBrightness(50);
   
   dht.setup(16, DHTesp::DHT22); //dht setup
 //  lcd.begin(16,2);//lcd setup
