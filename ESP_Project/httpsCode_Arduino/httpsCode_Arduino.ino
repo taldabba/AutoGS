@@ -72,7 +72,7 @@ void sendToWebserver(int temperature, int humidity, int soilMoisturePercent) {
  
     HTTPClient http;  //Declare an object of class HTTPClient
     WiFiClient wifi;
-    http.begin(wifi,"http://104.198.169.148:5000/helloesp?temperature=" + String(temperature) + "&humidity=" + String(humidity) + "&soilMoisturePercent=" + String(soilMoisturePercent)); //Specify request destination
+    http.begin(wifi,"http://192.168.2.51:5000/helloesp?temperature=" + String(temperature) + "&humidity=" + String(humidity) + "&soilMoisturePercent=" + String(soilMoisturePercent)); //Specify request destination
 
     int httpCode = http.GET(); //Send the request
  
@@ -94,7 +94,7 @@ String getFlaskCommands(){
  
     HTTPClient http;  //Declare an object of class HTTPClient
     WiFiClient wifi;
-    http.begin(wifi,"http://104.198.169.148:5000/espcommands"); //Specify request destination
+    http.begin(wifi,"http://192.168.2.51:5000/espcommands"); //Specify request destination
 
     int httpCode = http.GET(); //Send the request
  
