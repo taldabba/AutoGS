@@ -161,7 +161,7 @@ void loop() {
   const int WaterValue = 305; 
   const int SensorPin = A0;
   int soilMoistureValue = 0;
-  int soilMoisturePercent=0;
+  int soilMoisturePercent = 0;
   
   int humidity = dht.getHumidity();
   int temperature = dht.getTemperature();
