@@ -1,0 +1,61 @@
+body{
+
+    background-color: rgb(0, 0, 0);
+
+}
+
+header{
+
+    
+    height: 30px;
+    text-align: center;
+    padding: 20px;
+    
+
+}
+nav{
+    background-color: rgba(68, 170, 28, 0.445);
+    text-align: center;
+    font-size: 200%;
+    padding-top: 10px;
+
+}
+a{
+    color: white;
+    margin-left: 1%;
+}
+
+.box1
+{
+    background-color: rgba(68, 170, 28, 0.445);
+    width: auto;
+    height: auto;
+    text-align: center;
+    color: white;
+
+}
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background: white;
+	background-size: 15%;
+	background-image: url(../images/geometric-background.png), linear-gradient(white 60%, rgba(78, 255, 78, 0.452));
+    font-family: 'Exo', sans-serif;
+}
+h1{
+    font-size: 30px;
+}
+section{
+    text-align: center;
+}
+
+
+
+
+

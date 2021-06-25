@@ -207,8 +207,28 @@ def commands():
 
 	return commandString
 
-@app.route("/",methods = ["POST","GET"])
+@app.route("/how_it_works.html")
+def how_it_works():
+	return render_template("how_it_works.html")
+
+@app.route("/")
+def default():
+	return redirect("home.html")
+
+@app.route("/home.html")
 def home():
+	return render_template("home.html")
+
+@app.route("/video.html")
+def video():
+	return render_template("video.html")
+
+@app.route("/about_us.html")
+def about_us():
+	return render_template("about_us.html")
+
+@app.route("/control",methods = ["POST","GET"])
+def control():
 	if request.method == "POST":
 		getPost(app, "led-button")
 		if (getPost(app, "led-button")):

@@ -1,0 +1,57 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background: white;
+	background-size: 15%;
+	background-image: url(../images/geometric-background.png), linear-gradient(white 60%, rgba(78, 255, 78, 0.452));
+    font-family: 'Exo', sans-serif;
+}
+
+header{
+    height: 30px;
+    padding: 30px;
+    text-align: center;
+    position: relative; top: -40px;
+}
+nav{
+    background-color: rgba(68, 170, 28, 0.445);
+    text-align: center;
+    font-size: 200%;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+a{
+    color: white;
+    margin-left: 1%;
+}
+
+.subtitles{
+    font-size: 30px;
+    font-style:italic;
+    text-align: center;
+    background-color: rgba(68, 170, 28, 0.445);
+}
+.infotxt{
+    font-size: 20px;
+    margin-left: 5px;
+}
+.introtxt{
+
+    font-size: 30px;
+    text-align: center;
+
+
+}
+h1{
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+
