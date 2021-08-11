@@ -8,9 +8,11 @@ sensors that include temperature, humidity, and moisture sensor. The automatic w
 sensor, and manual watering is done through by typing a set number of seconds. The biggest aspect of AutoGS is that <br>
 it is all controlled on a website. There is no way to control the greenhouse physically! <br>
 
+![autogs](webapp/static/images/autogs-logo.png)
+
 # Roles:
-Taim Al-Dabbagh: Hardware, Firmware, Front-End Development
-Adam Ikram: Back-End Development
+Taim Al-Dabbagh: Hardware, Firmware, Front-End Development <br>
+Adam Ikram: Back-End Development <br>
 Hamza Kamal: Budgeting and Financial Advisor
 
 # Presentation
