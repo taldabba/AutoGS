@@ -10,6 +10,7 @@ it is all controlled on a website. There is no way to control the greenhouse phy
 
 ![autogs](webapp/static/images/autogs-logo.png)
 
+
 # Roles:
 Taim Al-Dabbagh: Hardware, Firmware, Front-End Development <br>
 Adam Ikram: Back-End Development <br>
@@ -18,4 +19,4 @@ Hamza Kamal: Budgeting and Financial Advisor
 # Presentation
 
 If you would like to see the presentation made for the project, click the link below!
-https://docs.google.com/presentation/d/1pu0tGr_mscyF34GFyK9jgce1vEZ8z3GDwGecGcFrY1w/edit?usp=sharing
+https://docs.google.com/presentation/d/1Epsz7g38-xdMvVd-PFqC3vDY3L9fN5klvWrpnv8AvSQ/edit?usp=sharing
