@@ -9,7 +9,8 @@ sensor, and manual watering is done through by typing a set number of seconds. T
 it is all controlled on a website. There is no way to control the greenhouse physically! <br>
 
 ![autogs](webapp/static/images/autogs-logo.png)
-
+![autogs2](finalproduct.jpg)
+![autogs3](lcd.jpg)
 
 # Roles:
 Taim Al-Dabbagh: Hardware, Firmware, Front-End Development <br>
